@@ -4,22 +4,24 @@
     <title>Suunto DM Editor</title>
   </head>
   <body>
-		<script>
-			var fs = require("fs");
-			//var file = '/Users/follesoe/.config/Suunto/Suunto\ DM4/1.1.14.3463/DM4.db';
-			var file = '/Users/follesoe/Desktop/DM4.db';
-			var exists = fs.existsSync(file);
-			document.write(file + ' exists: ' + exists);
+    <script>
+      var fs = require("fs");
+      //var file = '/Users/follesoe/.config/Suunto/Suunto\ DM4/1.1.14.3463/DM4.db';
+      var file = '/Users/follesoe/Desktop/DM4.db';
+      var exists = fs.existsSync(file);
+      document.write(file + ' exists: ' + exists);
 
-			var sqlite3 = require("sqlite3").verbose();
-			var db = new sqlite3.Database(file);
+      var sqlite3 = require("sqlite3").verbose();
+      var db = new sqlite3.Database(file);
+			var moment = require('moment');
 
-			document.write('<ul>');
-			db.each("SELECT DiveId, StartTime, Duration, Mode, MaxDepth FROM Dive", function(err, row) {
-					document.write('<li>DiveId: ' + row.DiveId + ', StartTime: ' + row.StartTime + ', Duration: ' + row.Duration + ', Mode: ' + row.Mode + ', MaxDepth: ' + row.MaxDepth + '</li>');
-			});
-			db.close();
-			document.write('</ul>');
-		</script>
+      document.write('<ul>');
+      db.each("SELECT DiveId, StartTime, Duration, Mode, MaxDepth FROM Dive", function(err, row) {
+				row.Start = moment((row.StartTime - 621355968000000000)/10000);
+        document.write('<li>DiveId: ' + row.DiveId + ', StartTime: ' + row.Start.toString() + ', Duration: ' + row.Duration + ', Mode: ' + row.Mode + ', MaxDepth: ' + row.MaxDepth + '</li>');
+      });
+      db.close();
+      document.write('</ul>');
+    </script>
   </body>
 </html>
