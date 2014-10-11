@@ -3,8 +3,9 @@
   <head>
     <title>Suunto DM Editor</title>
   </head>
-  <body>
-    <script>
+  <body ng-app="suuntoDMEditor" ng-controller="main">
+    <h1>{{message}}</h1>
+    <!--<script>
       var fs = require("fs");
       //var file = '/Users/follesoe/.config/Suunto/Suunto\ DM4/1.1.14.3463/DM4.db';
       var file = '/Users/follesoe/Desktop/DM4.db';
@@ -22,6 +23,10 @@
       });
       db.close();
       document.write('</ul>');
-    </script>
+    </script>-->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/lodash/dist/lodash.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
   </body>
 </html>
