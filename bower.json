@@ -1,0 +1,11 @@
+{
+  "name": "SuuntoDMEditor",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "lib"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.15"
+  }
+}
