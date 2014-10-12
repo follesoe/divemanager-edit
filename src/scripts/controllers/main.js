@@ -11,6 +11,7 @@ angular.module('suuntoDMEditor')
 
 		var db = new sqlite3.Database(file);
 		db.each("SELECT DiveId, StartTime, Duration, Mode, MaxDepth FROM Dive", function(err, row) {
+			row.selected = false;
 			row.StartTime = moment((row.StartTime - 621355968000000000)/10000);
 			$scope.dives.push(row);
 			$scope.$apply();

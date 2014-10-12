@@ -2,32 +2,18 @@
 <html>
   <head>
     <title>Suunto DM Editor</title>
+    <link rel="stylesheet" href="styles/app.css">
   </head>
   <body ng-app="suuntoDMEditor" ng-controller="main">
     <h2>{{file}}</h2>
     <ul>
-      <li ng-repeat="dive in dives">ID: {{dive.DiveId}}, Time: {{dive.StartTime}}, Depth: {{dive.MaxDepth}}, Duration: {{dive.Duration}}, Mode: {{dive.Mode}}</li>
+      <li
+        ng-repeat="dive in dives"
+        selection-model
+        selection-model-mode="multiple-additive">ID: {{dive.DiveId}}, Time: {{dive.StartTime}}, Depth: {{dive.MaxDepth}}, Duration: {{dive.Duration}}, Mode: {{dive.Mode}}</li>
     </ul>
-    <!--<script>
-      var fs = require("fs");
-      //var file = '/Users/follesoe/.config/Suunto/Suunto\ DM4/1.1.14.3463/DM4.db';
-      var file = '/Users/follesoe/Desktop/DM4.db';
-      var exists = fs.existsSync(file);
-      document.write(file + ' exists: ' + exists);
-
-      var sqlite3 = require("sqlite3").verbose();
-      var db = new sqlite3.Database(file);
-			//var moment = require('moment');
-
-      document.write('<ul>');
-      db.each("SELECT DiveId, StartTime, Duration, Mode, MaxDepth FROM Dive", function(err, row) {
-				//row.Start = moment((row.StartTime - 621355968000000000)/10000);
-        document.write('<li>DiveId: ' + row.DiveId + ', StartTime: ' + row.StartTime + ', Duration: ' + row.Duration + ', Mode: ' + row.Mode + ', MaxDepth: ' + row.MaxDepth + '</li>');
-      });
-      db.close();
-      document.write('</ul>');
-    </script>-->
     <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-selection-model/dist/selection-model.js"></script>
     <script src="lib/lodash/dist/lodash.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
