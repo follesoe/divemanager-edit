@@ -60,6 +60,8 @@ angular.module('suuntoDMEditor')
 			db.each('SELECT DiveId, StartTime, Duration, Mode, MaxDepth, Note FROM Dive ORDER BY StartTime DESC', function (err, row) {
 				row.selected = false;
 				row.StartTime = moment((row.StartTime - 621355968000000000)/10000).zone(0).format('DD.MM.YY hh:mm');
+				console.log(row.Duration);
+				row.Duration = moment.utc(0).add(row.Duration, 's').format('HH:mm:ss');
 				$scope.dives.push(row);
 				$scope.$apply();
 			});
