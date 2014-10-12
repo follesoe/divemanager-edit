@@ -6,15 +6,23 @@
   </head>
   <body ng-app="suuntoDMEditor" ng-controller="main">
     <h2>{{file}}</h2>
+    <label><input type="radio" ng-model="mode" value="0">0 air</label>
+    <label><input type="radio" ng-model="mode" value="1">1 ean</label>
+    <label><input type="radio" ng-model="mode" value="2">2 gauge</label>
+    <label><input type="radio" ng-model="mode" value="3">3 free</label>
+    <textarea ng-model="note"></textarea>
+    <button ng-click="save()">Commit changes to {{selectedDives.length}} dives</button>
+    <button ng-click="backup()">Take backup</button>
+    <button ng-click="deselect()">Deselect all</button>
     <ul>
       <li
         ng-repeat="dive in dives"
         selection-model
-        selection-model-mode="multiple-additive">ID: {{dive.DiveId}}, Time: {{dive.StartTime}}, Depth: {{dive.MaxDepth}}, Duration: {{dive.Duration}}, Mode: {{dive.Mode}}</li>
+        selection-model-mode="multiple-additive"
+        selection-model-selected-items="selectedDives">{{dive.StartTime}} ({{dive.MaxDepth}}m, {{dive.Duration}}s) - Mode: {{dive.Mode}}</li>
     </ul>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-selection-model/dist/selection-model.js"></script>
-    <script src="lib/lodash/dist/lodash.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
   </body>
