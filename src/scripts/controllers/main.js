@@ -1,34 +1,14 @@
 var fs = require('fs');
 var moment = require('moment');
 var _ = require('lodash');
-//var sqlite3 = require("sqlite3").verbose();
+var sqlite3 = require("sqlite3").verbose();
 
 //	'~/.config/Suunto/Suunto\ DM4/1.1.14.3463/';
 
 'use strict';
 angular.module('suuntoDMEditor')
-  .controller('main', function ($scope, dbpath) {
+  .controller('main', function ($scope, dbpath, dbaccess) {
     var pathResult = dbpath.getPath();
-
-    if (pathResult.exists) {
-      console.log('DB found at ' + pathResult.path);
-    }
-
-    /*
-    var db;
-    var dmDir = process.env.HOME + '/.config/Suunto/Suunto DM4';
-
-    if (fs.existsSync(dmDir)) {
-      var files = fs.readdirSync(dmDir);
-      var versionDir = _(files).filter(function (f) {
-        var stat = fs.statSync(dmDir + '/' + f);
-        return stat.isDirectory();
-      }).first();
-      dmDir = dmDir + '/' + versionDir;
-    }
-
-    dmDir = "/Users/follesoe/Desktop";
-    */
 
     $scope.mode = 0;
     $scope.note = '';
@@ -70,17 +50,10 @@ angular.module('suuntoDMEditor')
       });*/
     }
 
-    /*
     if ($scope.fileExists) {
-      db = new sqlite3.Database($scope.file);
-      db.each('SELECT DiveId, StartTime, Duration, Mode, MaxDepth, Note FROM Dive ORDER BY StartTime DESC', function (err, row) {
-        row.selected = false;
-        row.StartTime = moment((row.StartTime - 621355968000000000)/10000).zone(0).format('DD.MM.YY hh:mm');
-        row.Duration = moment.utc(0).add(row.Duration, 's').format('HH:mm:ss');
-        $scope.dives.push(row);
-        $scope.$apply();
+      dbaccess.getDives($scope.file).then(function (dives) {
+        $scope.dives = dives;
       });
-      db.close();
     }
-    */
+
   });
