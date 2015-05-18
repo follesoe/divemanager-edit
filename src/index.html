@@ -7,7 +7,10 @@
   <body ng-app="suuntoDMEditor" ng-controller="main">
 
     <div id="main">
-      <nav>
+
+      <h2 ng-hide="fileExists">Suunto Dive Manager not found on your computer.</h2>
+
+      <nav ng-show="fileExists">
         <ul>
           <li
             ng-click="select(dive)"
@@ -16,7 +19,7 @@
         </ul>
       </nav>
 
-      <section>
+      <section ng-show="fileExists">
         <h2>{{file}}</h2>
         <label><input type="radio" ng-model="selectedDive.Mode" value="0">0 air</label>
         <label><input type="radio" ng-model="selectedDive.Mode" value="1">1 ean</label>

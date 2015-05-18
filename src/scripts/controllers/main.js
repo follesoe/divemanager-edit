@@ -3,8 +3,6 @@ var moment = require('moment');
 var _ = require('lodash');
 var sqlite3 = require("sqlite3").verbose();
 
-//	'~/.config/Suunto/Suunto\ DM4/1.1.14.3463/';
-
 'use strict';
 angular.module('suuntoDMEditor')
   .controller('main', function ($scope, dbpath, dbaccess) {
