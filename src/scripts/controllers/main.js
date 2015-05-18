@@ -32,8 +32,8 @@ angular.module('suuntoDMEditor')
 
     $scope.mode = 0;
     $scope.note = '';
-    $scope.file = '' //dmDir + '/DM4.db';
-    $scope.fileExists = true; //fs.existsSync($scope.file);
+    $scope.file = pathResult.path;
+    $scope.fileExists = pathResult.exists;
     $scope.dives = [];
     $scope.selectedDives = [];
 

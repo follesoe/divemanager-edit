@@ -20,7 +20,7 @@ angular.module('suuntoDMEditor')
       var suuntoDir = process.env.HOME + '/.config/Suunto/';
       var dmDir = suuntoDir + getFirstSubDirectory(suuntoDir) + '/';
       var buildDir = dmDir + getFirstSubDirectory(dmDir) + '/';
-      var dbPath = buildDir + '/DM4.db';
+      var dbPath = buildDir + 'DM4.db';
 
       if (fs.existsSync(dbPath)) {
         return {
