@@ -5,17 +5,35 @@
     <link rel="stylesheet" href="styles/app.css">
   </head>
   <body ng-app="suuntoDMEditor" ng-controller="main">
-    <h2>{{file}}</h2>
-    <label><input type="radio" ng-model="mode" value="0">0 air</label>
-    <label><input type="radio" ng-model="mode" value="1">1 ean</label>
-    <label><input type="radio" ng-model="mode" value="2">2 gauge</label>
-    <label><input type="radio" ng-model="mode" value="3">3 free</label>
-    <textarea ng-model="note"></textarea>
-    <button ng-click="save()">Commit changes</button>
-    <button ng-click="backup()">Take backup</button>
-    <ul>
-      <li ng-repeat="dive in dives">{{dive.StartTime}} ({{dive.MaxDepth}}m, {{dive.Duration}}s) - Mode: {{dive.Mode}}</li>
-    </ul>
+
+    <div id="main">
+      <nav>
+        <ul>
+          <li
+            ng-click="select(dive)"
+            ng-class="{selected:dive.Selected}"
+            ng-repeat="dive in dives">{{dive.StartTime}} ({{dive.MaxDepth}}m, {{dive.Duration}}s) - Mode: {{dive.Mode}}</li>
+        </ul>
+      </nav>
+
+      <section>
+        <h2>{{file}}</h2>
+        <label><input type="radio" ng-model="selectedDive.Mode" value="0">0 air</label>
+        <label><input type="radio" ng-model="selectedDive.Mode" value="1">1 ean</label>
+        <label><input type="radio" ng-model="selectedDive.Mode" value="2">2 gauge</label>
+        <label><input type="radio" ng-model="selectedDive.Mode" value="3">3 free</label>
+
+        <button ng-click="save()">Save</button>
+
+        <div ng-show="selectedDive">
+          <h2>{{selectedDive.DiveId}}</h2>
+          <h2>{{selectedDive.StartTime}}</h2>
+          <h2>{{selectedDive.MaxDepth}}</h2>
+        </div>
+
+      </section>
+    </div>
+
     <script src="node_modules/angular/angular.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/services/dbpath.js"></script>

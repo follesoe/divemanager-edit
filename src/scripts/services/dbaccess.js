@@ -12,7 +12,7 @@ angular.module('suuntoDMEditor')
 
       db.all('SELECT DiveId, StartTime, Duration, Mode, MaxDepth, Note FROM Dive ORDER BY StartTime DESC', function (err, rows) {
         _(rows).each(function (row) {
-          row.selected = false;
+          row.Selected = false;
           row.StartTime = moment((row.StartTime - 621355968000000000)/10000).zone(0).format('DD.MM.YY hh:mm');
           row.Duration = moment.utc(0).add(row.Duration, 's').format('HH:mm:ss');
           dives.push(row);
@@ -23,5 +23,15 @@ angular.module('suuntoDMEditor')
       db.close();
       return deferred.promise;
     };
+
+    this.saveDive = function (dbPath, dive) {
+      var db = new sqlite3.Database(dbPath);
+      db.serialize(function () {
+        var stmt = db.prepare('UPDATE Dive SET Mode = (?) WHERE DiveId = (?)');
+        stmt.run(dive.Mode, dive.DiveId);
+        stmt.finalize();
+      });
+      db.close();
+    }
 
   });

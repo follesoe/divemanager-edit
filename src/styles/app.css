@@ -1,6 +1,29 @@
 body {
-  background-color: red;
+  height: 100%;
+  background-color: #1C1C1C;
+  color: rgb(235, 235, 235);
+  margin: 0;
+
+  font-family: 'Lucida Grande', Arial, Tahoma, Verdana;
+  font-size: 17px;
 }
+
+#main {
+  display: flex;
+  height: 100%;
+  max-height: 100%;
+}
+
+nav {
+  width: 50%;
+  height: 100%;
+  overflow: auto;
+}
+
+section {
+  width: 50%;
+}
+
 .selected {
-  background-color: blue;
+  color: red;
 }
