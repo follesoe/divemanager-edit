@@ -1,5 +1,11 @@
-body {
+html, body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
   background-color: #1C1C1C;
   color: rgb(235, 235, 235);
   margin: 0;
@@ -15,13 +21,21 @@ body {
 }
 
 nav {
-  width: 50%;
+  position: absolute;
+  overflow-y: scroll;
   height: 100%;
-  overflow: auto;
+  width: 40%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+ul {
+  margin: 0;
 }
 
 section {
-  width: 50%;
+  margin-left: 40%;
 }
 
 .selected {

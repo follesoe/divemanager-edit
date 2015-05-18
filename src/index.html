@@ -2,40 +2,36 @@
 <html>
   <head>
     <title>Suunto DM Editor</title>
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="styles/app.css">
   </head>
   <body ng-app="suuntoDMEditor" ng-controller="main">
+    <nav ng-show="fileExists">
+      <ul>
+        <li
+          ng-click="select(dive)"
+          ng-class="{selected:dive.Selected}"
+          ng-repeat="dive in dives">{{dive.StartTime}} ({{dive.MaxDepth}}m, {{dive.Duration}}s) - Mode: {{dive.Mode}}</li>
+      </ul>
+    </nav>
 
-    <div id="main">
-
+    <section ng-show="fileExists">
       <h2 ng-hide="fileExists">Suunto Dive Manager not found on your computer.</h2>
 
-      <nav ng-show="fileExists">
-        <ul>
-          <li
-            ng-click="select(dive)"
-            ng-class="{selected:dive.Selected}"
-            ng-repeat="dive in dives">{{dive.StartTime}} ({{dive.MaxDepth}}m, {{dive.Duration}}s) - Mode: {{dive.Mode}}</li>
-        </ul>
-      </nav>
+      <h2>{{file}}</h2>
+      <label><input type="radio" ng-model="selectedDive.Mode" value="0">0 air</label>
+      <label><input type="radio" ng-model="selectedDive.Mode" value="1">1 ean</label>
+      <label><input type="radio" ng-model="selectedDive.Mode" value="2">2 gauge</label>
+      <label><input type="radio" ng-model="selectedDive.Mode" value="3">3 free</label>
 
-      <section ng-show="fileExists">
-        <h2>{{file}}</h2>
-        <label><input type="radio" ng-model="selectedDive.Mode" value="0">0 air</label>
-        <label><input type="radio" ng-model="selectedDive.Mode" value="1">1 ean</label>
-        <label><input type="radio" ng-model="selectedDive.Mode" value="2">2 gauge</label>
-        <label><input type="radio" ng-model="selectedDive.Mode" value="3">3 free</label>
+      <button ng-click="save()">Save</button>
 
-        <button ng-click="save()">Save</button>
-
-        <div ng-show="selectedDive">
-          <h2>{{selectedDive.DiveId}}</h2>
-          <h2>{{selectedDive.StartTime}}</h2>
-          <h2>{{selectedDive.MaxDepth}}</h2>
-        </div>
-
-      </section>
-    </div>
+      <div ng-show="selectedDive">
+        <h2>{{selectedDive.DiveId}}</h2>
+        <h2>{{selectedDive.StartTime}}</h2>
+        <h2>{{selectedDive.MaxDepth}}</h2>
+      </div>
+    </section>
 
     <script src="node_modules/angular/angular.js"></script>
     <script src="scripts/app.js"></script>
