@@ -1,2 +1,2 @@
 'use strict';
-angular.module('suuntoDMEditor', ['selectionModel']);
+angular.module('suuntoDMEditor', []);
