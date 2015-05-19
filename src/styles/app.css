@@ -10,7 +10,7 @@ body {
   color: rgb(235, 235, 235);
   margin: 0;
 
-  font-family: 'Lucida Grande', Arial, Tahoma, Verdana;
+  font-family: 'Helvetica Light', 'Lucida Grande', Arial, Tahoma, Verdana;
   font-size: 17px;
 }
 
@@ -30,12 +30,11 @@ nav {
   bottom: 0;
 }
 
-h1 {
+h1, h2 {
   text-transform: uppercase;
-  margin: 12px 0 0 12px;
 }
 
-nav h1 {
+h1 {
   margin: 12px 0 0 12px;
 }
 
@@ -87,4 +86,33 @@ img.mode {
 img.subicon {
   width: 30px;
   padding-right: 6px;
+}
+
+.dive-data {
+  margin-left: 12px;
+  margin-bottom: 32px;
+}
+
+.dive-data img {
+  width: 48px;
+}
+
+.dive-data div {
+  display: flex;
+  align-items: center;
+}
+
+.dive-data h2 {
+  margin: 6px 0 6px 0;
+}
+
+.dive-data h3 {
+  margin: 0 0 0 16px;
+  font-size: 38px;
+}
+
+.dive-data h4 {
+  color: #363636;
+  margin: 0 0 0 8px;
+  font-size: 24px;
 }

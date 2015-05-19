@@ -34,11 +34,50 @@
 
       <button ng-click="save()">Save</button>
 
-      <div ng-show="selectedDive">
-        <h2>{{selectedDive.DiveId}}</h2>
-        <h2>{{selectedDive.StartTime}}</h2>
-        <h2>{{selectedDive.MaxDepth|round}}</h2>
+      <div class="dive-data">
+        <h2>Time In</h2>
+        <div>
+          <img src="images/timeicon.png" />
+          <h3>{{selectedDive.StartTime}}</h3>
+          <h4>h</h4>
+        </div>
       </div>
+
+      <div class="dive-data">
+        <h2>Max Depth</h2>
+        <div>
+          <img src="images/depthicon.png" />
+          <h3>{{selectedDive.MaxDepth|round}}</h3>
+          <h4>m</h4>
+        </div>
+      </div>
+
+      <div class="dive-data">
+        <h2>Max Depth Temp.</h2>
+        <div>
+          <img src="images/tempicon.png" />
+          <h3>{{selectedDive.BottomTemperature}}</h3>
+          <h4>C</h4>
+        </div>
+      </div>
+
+      <div class="dive-data">
+        <h2>Duration</h2>
+        <div>
+          <img src="images/timeicon.png" />
+          <h3>{{selectedDive.Duration}}</h3>
+          <h4>h</h4>
+        </div>
+      </div>
+
+      <div class="dive-data">
+        <h2>Dive Number In Series</h2>
+        <div>
+          <img src="images/numbericon.png" />
+          <h3>{{selectedDive.DiveNumberInSerie}}</h3>
+        </div>
+      </div>
+
     </section>
 
     <script src="node_modules/angular/angular.js"></script>
