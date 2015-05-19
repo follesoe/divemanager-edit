@@ -11,7 +11,11 @@
         <li
           ng-click="select(dive)"
           ng-class="{selected:dive.Selected}"
-          ng-repeat="dive in dives">{{dive.StartTime}} ({{dive.MaxDepth}}m, {{dive.Duration}}s) - Mode: {{dive.Mode}}</li>
+          ng-repeat="dive in dives">
+          <img src="{{dive.Mode|modeicon}}" class="mode" />
+          <span>{{dive.StartDate}}</span>
+          <span>{{dive.Duration}}</span>
+          <span>{{dive.MaxDepth|round}}</span>
       </ul>
     </nav>
 
@@ -29,7 +33,7 @@
       <div ng-show="selectedDive">
         <h2>{{selectedDive.DiveId}}</h2>
         <h2>{{selectedDive.StartTime}}</h2>
-        <h2>{{selectedDive.MaxDepth}}</h2>
+        <h2>{{selectedDive.MaxDepth|round}}</h2>
       </div>
     </section>
 
@@ -38,5 +42,7 @@
     <script src="scripts/services/dbpath.js"></script>
     <script src="scripts/services/dbaccess.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/filters/modeicon.js"></script>
+    <script src="scripts/filters/round.js"></script>
   </body>
 </html>

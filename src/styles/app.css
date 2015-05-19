@@ -24,18 +24,43 @@ nav {
   position: absolute;
   overflow-y: scroll;
   height: 100%;
-  width: 40%;
+  width: 50%;
   top: 0;
   left: 0;
   bottom: 0;
 }
 
-ul {
-  margin: 0;
+section {
+  margin-left: 50%;
 }
 
-section {
-  margin-left: 40%;
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  padding: 6px;
+  cursor: arrow;
+  display: flex;
+  align-items: center;
+}
+
+.icon-and-text {
+  margin: 6px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+img.mode {
+  width: 42px;
+}
+
+img.subicon {
+  width: 30px;
+  padding-right: 6px;
 }
 
 .selected {
