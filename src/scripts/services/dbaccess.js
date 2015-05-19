@@ -13,7 +13,7 @@ angular.module('suuntoDMEditor')
       db.all('SELECT DiveId, StartTime, Duration, Mode, MaxDepth, Note FROM Dive ORDER BY StartTime DESC', function (err, rows) {
         _(rows).each(function (row) {
           row.Selected = false;
-          row.StartDate = moment((row.StartTime - 621355968000000000)/10000).zone(0).format('DD.MM.YY');
+          row.StartDate = moment((row.StartTime - 621355968000000000)/10000).zone(0).format('DD.MM.YYYY');
           row.StartTime = moment((row.StartTime - 621355968000000000)/10000).zone(0).format('hh:mm');
           row.Duration = moment.utc(0).add(row.Duration, 's').format('HH:mm:ss');
           dives.push(row);

@@ -24,14 +24,29 @@ nav {
   position: absolute;
   overflow-y: scroll;
   height: 100%;
-  width: 50%;
+  width: 40%;
   top: 0;
   left: 0;
   bottom: 0;
 }
 
+h1 {
+  text-transform: uppercase;
+  margin: 12px 0 0 12px;
+}
+
+nav h1 {
+  margin: 12px 0 0 12px;
+}
+
+small {
+  font-size: 10px;
+  margin-left: 12px;
+  color: #363636;
+}
+
 section {
-  margin-left: 50%;
+  margin-left: 40%;
 }
 
 ul {
@@ -41,17 +56,28 @@ ul {
 }
 
 li {
-  padding: 6px;
-  cursor: arrow;
+  margin: 12px;
   display: flex;
   align-items: center;
 }
 
-.icon-and-text {
-  margin: 6px;
-  display: flex;
-  align-items: center;
-  font-size: 20px;
+li:nth-child(odd) {
+  background-color: #252525;
+}
+
+li:hover, li.selected {
+  background-color: #363636;
+}
+
+li span {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+span.light {
+  color: #6abfda;
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 img.mode {
@@ -61,8 +87,4 @@ img.mode {
 img.subicon {
   width: 30px;
   padding-right: 6px;
-}
-
-.selected {
-  color: red;
 }
