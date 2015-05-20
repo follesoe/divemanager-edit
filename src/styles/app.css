@@ -14,6 +14,10 @@ body {
   font-size: 17px;
 }
 
+a {
+  color: #ad1b24;
+}
+
 #main {
   display: flex;
   height: 100%;
@@ -70,9 +74,11 @@ ul {
 }
 
 li {
+  transition: 0.25s all;
   margin: 12px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 li:nth-child(odd) {
@@ -157,6 +163,7 @@ label.divemode input {
 }
 
 label.divemode img {
+  transition: 0.25s all;
   opacity: 0.15;
 }
 
@@ -191,4 +198,8 @@ button {
 button.action {
   background-color: #ad1b24;
   border-color: #ad1b24;
+}
+
+.not-found {
+  margin: 24px 24px;
 }

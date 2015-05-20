@@ -6,6 +6,18 @@
     <link rel="stylesheet" href="styles/app.css">
   </head>
   <body ng-app="suuntoDMEditor" ng-controller="main">
+
+    <div class="not-found" ng-hide="fileExists">
+      <h2>Suunto Dive Manager not found</h2>
+      <p>
+        The application could not find Suunto Dive Manager installed on your computer.
+      </p>
+      <p>
+        If you do have it installed this must be a bug. Please submit an issue on the projects
+        <a href="http://www.github.com/TODO">github page</a>.
+      </p>
+    </div>
+
     <nav ng-show="fileExists">
       <h1>Your Dives</h1>
       <small>{{file}}</small>
