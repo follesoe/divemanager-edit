@@ -35,7 +35,12 @@ h1, h2 {
 }
 
 h1 {
-  margin: 12px 0 0 12px;
+  margin: 6px 0;
+}
+
+h2 {
+  font-size: 28px;
+  margin: 6px 0;
 }
 
 small {
@@ -46,6 +51,7 @@ small {
 
 section {
   margin-left: 40%;
+  padding-left: 12px;
 }
 
 ul {
@@ -89,7 +95,6 @@ img.subicon {
 }
 
 .dive-data {
-  margin-left: 12px;
   margin-bottom: 32px;
 }
 
@@ -102,11 +107,6 @@ img.subicon {
   align-items: center;
 }
 
-.dive-data h2 {
-  font-size: 28px;
-  margin: 6px 0 6px 0;
-}
-
 .dive-data h3 {
   margin: 0 0 0 16px;
   font-size: 26px;
@@ -116,4 +116,30 @@ img.subicon {
   color: #363636;
   margin: 0 0 0 8px;
   font-size: 22px;
+}
+
+div.divemodes {
+  display: flex;
+}
+
+label.divemode {
+  margin-right: 16px;
+}
+
+label.divemode input {
+  display: none;
+}
+
+label.divemode img {
+  opacity: 0.2;
+}
+
+label.divemode h3 {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 6px 0;
+}
+
+label.selectedmode img {
+  opacity: 1.0 !important;
 }

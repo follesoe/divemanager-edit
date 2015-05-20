@@ -28,10 +28,30 @@
 
       <h2 ng-hide="fileExists">Suunto Dive Manager not found on your computer.</h2>
 
-      <label><input type="radio" ng-model="selectedDive.Mode" value="0">0 air</label>
-      <label><input type="radio" ng-model="selectedDive.Mode" value="1">1 ean</label>
-      <label><input type="radio" ng-model="selectedDive.Mode" value="2">2 gauge</label>
-      <label><input type="radio" ng-model="selectedDive.Mode" value="3">3 free</label>
+      <h2>Dive Mode</h2>
+
+      <div class="divemodes">
+        <label class="divemode" ng-class="{selectedmode:selectedDive.Mode == 0}">
+          <img src="images/modes/0.png" />
+          <input type="radio" ng-model="selectedDive.Mode" value="0">
+          <h3>air</h3>
+        </label>
+        <label class="divemode" ng-class="{selectedmode:selectedDive.Mode == 1}">
+          <img src="images/modes/1.png" />
+          <input type="radio" ng-model="selectedDive.Mode" value="1">
+          <h3>ean</h3>
+        </label>
+        <label class="divemode" ng-class="{selectedmode:selectedDive.Mode == 2}">
+          <img src="images/modes/2.png" />
+          <input type="radio" ng-model="selectedDive.Mode" value="2">
+          <h3>gauge</h3>
+        </label>
+        <label class="divemode" ng-class="{selectedmode:selectedDive.Mode == 3}">
+          <img src="images/modes/3.png" />
+          <input type="radio" ng-model="selectedDive.Mode" value="3">
+          <h3>free</h3>
+        </label>
+      </div>
 
       <button ng-click="save()">Save</button>
 
