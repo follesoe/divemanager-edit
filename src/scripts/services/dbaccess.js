@@ -10,7 +10,7 @@ angular.module('suuntoDMEditor')
       var db = new sqlite3.Database(dbPath);
       var dives = [];
 
-      db.all('SELECT DiveId, StartTime, Duration, Mode, MaxDepth, Note, BottomTemperature, DiveNumberInSerie FROM Dive ORDER BY StartTime DESC', function (err, rows) {
+      db.all('SELECT DiveId, StartTime, Duration, Mode, MaxDepth, Note, BottomTemperature, DiveNumberInSerie, Source FROM Dive ORDER BY StartTime DESC', function (err, rows) {
         _(rows).each(function (row) {
           row.Selected = false;
           row.StartDate = moment((row.StartTime - 621355968000000000)/10000).zone(0).format('DD.MM.YYYY');

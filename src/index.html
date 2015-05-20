@@ -14,7 +14,8 @@
           ng-click="select(dive)"
           ng-class="{selected:dive.Selected}"
           ng-repeat="dive in dives">
-          <img src="{{dive.Mode|modeicon}}" class="mode" />
+          <img src="images/modes/{{dive.Mode}}.png" class="mode" />
+          <span>{{dive.Mode}}</span>
           <span>{{dive.StartDate}}</span>
           <span class="light">{{dive.Duration}} H</span>
           <span class="light">{{dive.MaxDepth|round}} M</span>
@@ -85,7 +86,6 @@
     <script src="scripts/services/dbpath.js"></script>
     <script src="scripts/services/dbaccess.js"></script>
     <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/filters/modeicon.js"></script>
     <script src="scripts/filters/round.js"></script>
   </body>
 </html>

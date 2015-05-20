@@ -94,7 +94,7 @@ img.subicon {
 }
 
 .dive-data img {
-  width: 48px;
+  width: 42px;
 }
 
 .dive-data div {
@@ -103,16 +103,17 @@ img.subicon {
 }
 
 .dive-data h2 {
+  font-size: 28px;
   margin: 6px 0 6px 0;
 }
 
 .dive-data h3 {
   margin: 0 0 0 16px;
-  font-size: 38px;
+  font-size: 26px;
 }
 
 .dive-data h4 {
   color: #363636;
   margin: 0 0 0 8px;
-  font-size: 24px;
+  font-size: 22px;
 }
