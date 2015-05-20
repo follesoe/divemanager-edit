@@ -79,8 +79,12 @@ li:nth-child(odd) {
   background-color: #252525;
 }
 
-li:hover, li.selected {
+li:hover {
   background-color: #363636;
+}
+
+li.selected {
+  background-color: #ad1b24;
 }
 
 li span {
@@ -92,6 +96,10 @@ span.light {
   color: #6abfda;
   margin-left: 12px;
   margin-right: 12px;
+}
+
+li.selected span.light {
+  color: white;
 }
 
 img.mode {

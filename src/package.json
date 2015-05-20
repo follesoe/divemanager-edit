@@ -14,7 +14,7 @@
     "url": "https://github.com/follesoe/divemanager-edit"
   },
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "width": 1024,
     "height": 720
   }
