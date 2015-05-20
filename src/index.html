@@ -15,7 +15,6 @@
           ng-class="{selected:dive.Selected}"
           ng-repeat="dive in dives">
           <img src="images/modes/{{dive.Mode}}.png" class="mode" />
-          <span>{{dive.Mode}}</span>
           <span>{{dive.StartDate}}</span>
           <span class="light">{{dive.Duration}} H</span>
           <span class="light">{{dive.MaxDepth|round}} M</span>
@@ -23,13 +22,8 @@
     </nav>
 
     <section ng-show="fileExists">
-
       <h1>Selected Dive</h1>
-
-      <h2 ng-hide="fileExists">Suunto Dive Manager not found on your computer.</h2>
-
       <h2>Dive Mode</h2>
-
       <div class="divemodes">
         <label class="divemode" ng-class="{selectedmode:selectedDive.Mode == 0}">
           <img src="images/modes/0.png" />
@@ -53,52 +47,49 @@
         </label>
       </div>
 
-      <button ng-click="save()">Save</button>
-
-      <div class="dive-data">
-        <h2>Time In</h2>
-        <div>
-          <img src="images/timeicon.png" />
-          <h3>{{selectedDive.StartTime}}</h3>
-          <h4>h</h4>
+      <div class="dive-data-fields">
+        <div class="dive-data">
+          <h2>Time In</h2>
+          <div>
+            <img src="images/timeicon.png" />
+            <h3>{{selectedDive.StartTime}}</h3>
+            <h4>h</h4>
+          </div>
+        </div>
+        <div class="dive-data">
+          <h2>Max Depth</h2>
+          <div>
+            <img src="images/depthicon.png" />
+            <h3>{{selectedDive.MaxDepth|round}}</h3>
+            <h4>m</h4>
+          </div>
+        </div>
+        <div class="dive-data">
+          <h2>Max Depth Temp</h2>
+          <div>
+            <img src="images/tempicon.png" />
+            <h3>{{selectedDive.BottomTemperature}}</h3>
+            <h4>C</h4>
+          </div>
+        </div>
+        <div class="dive-data">
+          <h2>Duration</h2>
+          <div>
+            <img src="images/timeicon.png" />
+            <h3>{{selectedDive.Duration}}</h3>
+            <h4>h</h4>
+          </div>
+        </div>
+        <div class="dive-data">
+          <h2>Dive In Series</h2>
+          <div>
+            <img src="images/numbericon.png" />
+            <h3>{{selectedDive.DiveNumberInSerie}}</h3>
+          </div>
         </div>
       </div>
 
-      <div class="dive-data">
-        <h2>Max Depth</h2>
-        <div>
-          <img src="images/depthicon.png" />
-          <h3>{{selectedDive.MaxDepth|round}}</h3>
-          <h4>m</h4>
-        </div>
-      </div>
-
-      <div class="dive-data">
-        <h2>Max Depth Temp.</h2>
-        <div>
-          <img src="images/tempicon.png" />
-          <h3>{{selectedDive.BottomTemperature}}</h3>
-          <h4>C</h4>
-        </div>
-      </div>
-
-      <div class="dive-data">
-        <h2>Duration</h2>
-        <div>
-          <img src="images/timeicon.png" />
-          <h3>{{selectedDive.Duration}}</h3>
-          <h4>h</h4>
-        </div>
-      </div>
-
-      <div class="dive-data">
-        <h2>Dive Number In Series</h2>
-        <div>
-          <img src="images/numbericon.png" />
-          <h3>{{selectedDive.DiveNumberInSerie}}</h3>
-        </div>
-      </div>
-
+      <button ng-click="save()" class="action">Save Changes</button>
     </section>
 
     <script src="node_modules/angular/angular.js"></script>

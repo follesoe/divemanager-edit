@@ -35,7 +35,16 @@ h1, h2 {
 }
 
 h1 {
-  margin: 6px 0;
+  margin: 24px 0 6px 0;
+}
+
+section h1 {
+  margin-bottom: 26px;
+}
+
+nav h1 {
+  margin-left: 12px;
+  margin-bottom: 0;
 }
 
 h2 {
@@ -94,7 +103,15 @@ img.subicon {
   padding-right: 6px;
 }
 
+.dive-data-fields {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
 .dive-data {
+  min-width: 300px;
   margin-bottom: 32px;
 }
 
@@ -120,6 +137,7 @@ img.subicon {
 
 div.divemodes {
   display: flex;
+  margin-bottom: 24px;
 }
 
 label.divemode {
@@ -131,7 +149,7 @@ label.divemode input {
 }
 
 label.divemode img {
-  opacity: 0.2;
+  opacity: 0.15;
 }
 
 label.divemode h3 {
@@ -142,4 +160,27 @@ label.divemode h3 {
 
 label.selectedmode img {
   opacity: 1.0 !important;
+}
+
+button {
+  padding: 7px 12px;
+  border: 1px solid #363636;
+  border-color: transparent;
+  background-color: #525252;
+  color: #e6e6e6;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.35);
+  transition: border .2s ease-out;
+  display: inline-block;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+}
+
+button.action {
+  background-color: #ad1b24;
+  border-color: #ad1b24;
 }
