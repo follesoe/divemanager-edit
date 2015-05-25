@@ -3,16 +3,9 @@
   "description": "SuntoDM Editor Build System",
   "version": "0.0.1",
   "dependencies": {},
-  "devDependencies": {
-    "bower": "^1.3.12",
-    "grunt": "^0.4.5",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-less": "^0.11.4",
-    "grunt-node-webkit-builder": "^0.2.3",
-    "grunt-shell": "^1.1.1"
-  },
+  "devDependencies": {},
   "scripts": {
     "build" : "./build.sh",
-    "icns" : "iconutil -c icns main.iconset && mv main.icns SuuntoDMEditor.app/Contents/Resources" 
+    "icns" : "iconutil -c icns main.iconset && mv main.icns SuuntoDMEditor.app/Contents/Resources"
   }
 }
