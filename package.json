@@ -10,5 +10,9 @@
     "grunt-contrib-less": "^0.11.4",
     "grunt-node-webkit-builder": "^0.2.3",
     "grunt-shell": "^1.1.1"
+  },
+  "scripts": {
+    "build" : "./build.sh",
+    "icns" : "iconutil -c icns main.iconset && mv main.icns SuuntoDMEditor.app/Contents/Resources" 
   }
 }

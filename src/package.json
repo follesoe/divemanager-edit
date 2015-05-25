@@ -14,6 +14,7 @@
     "url": "https://github.com/follesoe/divemanager-edit"
   },
   "window": {
+    "title": "Suunto Dive Manager Editor",
     "toolbar": false,
     "width": 1024,
     "height": 720
