@@ -1,12 +1,38 @@
 <Dive
   xmlns:i="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://schemas.datacontract.org/2004/07/Suunto.Diving.Dal">
+  <MaxDepth>12</MaxDepth>
+  <Visibility>0</Visibility>
+  <Weather>0</Weather>
+  <Weight>0</Weight>
+  <Boat></Boat>
+  <SurfaceTime>0</SurfaceTime>
+  <StartTemperature>0</StartTemperature>
+  <BottomTemperature>0</BottomTemperature>
+  <EndTemperature>0</EndTemperature>
+  <Mode>0</Mode>
+  <Note></Note>
+  <DiveTime>2400</DiveTime>
+  <StartTime>2007-06-27T12:00:43</StartTime>
+  <Duration>0</Duration>
+  <DiveTags>
+    <DiveTag>
+      <Text>Far Garden</Text>
+    </DiveTag>
+    <DiveTag>
+      <Text>Jonas Folles� (Buddy)</Text>
+    </DiveTag>
+    <DiveTag>
+      <Text>Sharm El Sheikh</Text>
+    </DiveTag>
+    <DiveTag>
+      <Text>Wael M. El Shahat (Divemaster)</Text>
+    </DiveTag>
+  </DiveTags>
   <Algorithm i:nil="true" />
   <AltitudeMode>0</AltitudeMode>
   <AscentTime i:nil="true" />
   <AvgDepth i:nil="true" />
-  <Boat></Boat>
-  <BottomTemperature>0</BottomTemperature>
   <BottomTime i:nil="true" />
   <CnsEnd i:nil="true" />
   <CnsStart i:nil="true" />
@@ -37,35 +63,15 @@
   </DiveMixtures>
   <DiveNumberInSerie>1</DiveNumberInSerie>
   <DiveSamples />
-  <DiveTags>
-    <DiveTag>
-      <Text>Far Garden</Text>
-    </DiveTag>
-    <DiveTag>
-      <Text>Jonas Folles� (Buddy)</Text>
-    </DiveTag>
-    <DiveTag>
-      <Text>Sharm El Sheikh</Text>
-    </DiveTag>
-    <DiveTag>
-      <Text>Wael M. El Shahat (Divemaster)</Text>
-    </DiveTag>
-  </DiveTags>
-  <DiveTime>2400</DiveTime>
   <DivingDaysInRow i:nil="true" />
-  <Duration>0</Duration>
   <EndPressure i:nil="true" />
-  <EndTemperature>0</EndTemperature>
   <HighSwitchPoint i:nil="true" />
   <LowSetPoint i:nil="true" />
   <LowSwitchPoint i:nil="true" />
   <Marks />
   <Master i:nil="true" />
-  <MaxDepth>12</MaxDepth>
   <MaxGf i:nil="true" />
   <MinGf i:nil="true" />
-  <Mode>0</Mode>
-  <Note></Note>
   <OlfEnd>0</OlfEnd>
   <OtuEnd i:nil="true" />
   <OtuStart i:nil="true" />
@@ -81,10 +87,7 @@
   <Software i:nil="true" />
   <Source></Source>
   <StartPressure i:nil="true" />
-  <StartTemperature>0</StartTemperature>
-  <StartTime>2007-06-27T12:00:43</StartTime>
   <SurfacePressure i:nil="true" />
-  <SurfaceTime>0</SurfaceTime>
   <TemperatureBlob i:nil="true" />
   <TissuePressuresHeliumEnd xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <TissuePressuresHeliumEndBlob i:nil="true" />
@@ -94,7 +97,4 @@
   <TissuePressuresNitrogenEndBlob i:nil="true" />
   <TissuePressuresNitrogenStart xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <TissuePressuresNitrogenStartBlob i:nil="true" />
-  <Visibility>0</Visibility>
-  <Weather>0</Weather>
-  <Weight>0</Weight>
-</Dive> 
+</Dive>
