@@ -17,9 +17,20 @@ angular.module('suuntoDMEditor')
     }
 
     this.getPath = function () {
+      var missing = {
+        exists: false,
+        path: ''
+      };
+
       var suuntoDir = process.env.HOME + '/.config/Suunto/';
+      if (!fs.existsSync(suuntoDir)) { return missing; }
+
       var dmDir = suuntoDir + getFirstSubDirectory(suuntoDir) + '/';
+      if (!fs.existsSync(dmDir)) { return missing; }
+
       var buildDir = dmDir + getFirstSubDirectory(dmDir) + '/';
+      if (!fs.existsSync(buildDir)) { return missing; }
+      
       var dbPath = buildDir + 'DM4.db';
 
       if (fs.existsSync(dbPath)) {
@@ -28,10 +39,7 @@ angular.module('suuntoDMEditor')
           path: dbPath
         };
       } else {
-        return {
-          exists: false,
-          path: ''
-        };
+        return missing;
       }
     };
   });
