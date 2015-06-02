@@ -10,7 +10,8 @@ var DiveApp = React.createClass({
         bottomTemp: 0,
         weather: 0,
         divemode: 0,
-        bottomTime: 0
+        bottomTime: 0,
+        boatName: ''
       }
     }
   },

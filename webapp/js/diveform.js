@@ -27,8 +27,9 @@ var DiveForm = React.createClass({
       bottomTime: React.findDOMNode(this.refs.bottomTime).value,
       surfaceTemp: React.findDOMNode(this.refs.surfaceTemp).value,
       bottomTemp: React.findDOMNode(this.refs.bottomTemp).value,
+      boatName: React.findDOMNode(this.refs.boatName).value,
       weather: this.refs.weather.getCheckedValue(),
-      divemode: this.refs.divemode.getCheckedValue()
+      divemode: this.refs.divemode.getCheckedValue(),
     });
   },
   render: function () {
@@ -49,6 +50,10 @@ var DiveForm = React.createClass({
         <label>
           Bottom Temperature
           <input type="number" ref="bottomTemp" value={this.props.dive.bottomTemp} onChange={this.handleChange} />
+        </label>
+        <label>
+          Boat
+          <input type="text" ref="boatName" value={this.props.dive.boatName} onChange={this.handleChange} />
         </label>
         <ImageRadioGroup
           name="weather"

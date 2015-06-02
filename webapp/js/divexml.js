@@ -10,6 +10,7 @@ var DiveXml = React.createClass({
           +'  <EndTemperature>' + dive.surfaceTemp + '</EndTemperature>\r\n'
           +'  <Weather>' + dive.weather + '</Weahter>\r\n'
           +'  <Mode>' + dive.divemode + '</Mode>\r\n'
+          +'  <Boat>' + dive.boatName.trim() + '</Boat>\r\n'
           +'</Dive>';
   },
   render: function () {
