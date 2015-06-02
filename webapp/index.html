@@ -42,9 +42,18 @@
         render: function () {
           return (
             <form>
-              <input type="number" ref="maxDepth" value={this.props.dive.maxDepth} onChange={this.handleChange} />
-              <input type="number" ref="surfaceTemp" value={this.props.dive.surfaceTemp}  onChange={this.handleChange} />
-              <input type="number" ref="bottomTemp" value={this.props.dive.bottomTemp} onChange={this.handleChange} />
+              <label>
+                Max Depth
+                <input type="number" ref="maxDepth" value={this.props.dive.maxDepth} onChange={this.handleChange} />
+              </label>
+              <label>
+                Surface Temperature
+                <input type="number" ref="surfaceTemp" value={this.props.dive.surfaceTemp}  onChange={this.handleChange} />
+              </label>
+              <label>
+                Bottom Temperature
+                <input type="number" ref="bottomTemp" value={this.props.dive.bottomTemp} onChange={this.handleChange} />
+              </label>
             </form>
           );
         }
@@ -65,7 +74,6 @@
           var xml = this.generateXml(this.props.dive);
           return (
             <section>
-              <h1>{this.props.dive.maxDepth}</h1>
               <pre>
                 {xml}
               </pre>
