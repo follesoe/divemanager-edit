@@ -5,11 +5,78 @@
     <script src="node_modules/react/dist/JSXTransformer.js"></script>
   </head>
   <body>
-    <div id="example"></div>
+    <div id="content"></div>
     <script type="text/jsx">
+      var DiveApp = React.createClass({
+        handleDiveChange: function (dive) {
+          this.setState({dive: dive});
+        },
+        getInitialState: function () {
+          return {
+            dive: {
+              maxDepth: 0,
+              surfaceTemp: 0,
+              bottomTemp: 0
+            }
+          }
+        },
+        render: function () {
+          return (
+            <section>
+              <DiveForm dive={this.state.dive} onDiveChange={this.handleDiveChange} />
+              <DiveXml dive={this.state.dive} />
+            </section>
+          );
+        }
+      });
+
+      var DiveForm = React.createClass({
+        handleChange: function (e) {
+          e.preventDefault();
+          this.props.onDiveChange({
+            maxDepth: React.findDOMNode(this.refs.maxDepth).value.trim(),
+            surfaceTemp: React.findDOMNode(this.refs.surfaceTemp).value.trim(),
+            bottomTemp: React.findDOMNode(this.refs.bottomTemp).value.trim()
+          });
+        },
+        render: function () {
+          return (
+            <form>
+              <input type="number" ref="maxDepth" value={this.props.dive.maxDepth} onChange={this.handleChange} />
+              <input type="number" ref="surfaceTemp" value={this.props.dive.surfaceTemp}  onChange={this.handleChange} />
+              <input type="number" ref="bottomTemp" value={this.props.dive.bottomTemp} onChange={this.handleChange} />
+            </form>
+          );
+        }
+      });
+
+      var DiveXml = React.createClass({
+        generateXml: function (dive) {
+          return '<Dive \r\n'
+                +'  xmlns:i="http://www.w3.org/2001/XMLSchema-instance"\r\n'
+                +'  xmlns="http://schemas.datacontract.org/2004/07/Suunto.Diving.Dal">\r\n'
+                +'  <MaxDepth>' + dive.maxDepth + '</MaxDepth>\r\n'
+                +'  <StartTemperature>' + dive.surfaceTemp + '</StartTemperature>\r\n'
+                +'  <BottomTemperature>' + dive.bottomTemp + '</BottomTemperature>\r\n'
+                +'  <EndTemperature>' + dive.surfaceTemp + '</EndTemperature>\r\n'
+                +'</Dive>';
+        },
+        render: function () {
+          var xml = this.generateXml(this.props.dive);
+          return (
+            <section>
+              <h1>{this.props.dive.maxDepth}</h1>
+              <pre>
+                {xml}
+              </pre>
+            </section>
+          );
+        }
+      });
+
       React.render(
-        <h1>Hello, world!</h1>,
-        document.getElementById('example')
+        <DiveApp />,
+        document.getElementById('content')
       );
     </script>
   </body>
