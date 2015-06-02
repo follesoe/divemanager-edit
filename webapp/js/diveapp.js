@@ -9,7 +9,8 @@ var DiveApp = React.createClass({
         surfaceTemp: 0,
         bottomTemp: 0,
         weather: 0,
-        divemode: 0
+        divemode: 0,
+        bottomTime: 0
       }
     }
   },

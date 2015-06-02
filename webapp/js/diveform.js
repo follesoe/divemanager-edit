@@ -23,9 +23,10 @@ var DiveForm = React.createClass({
   },
   handleChange: function (e) {
     this.props.onDiveChange({
-      maxDepth: React.findDOMNode(this.refs.maxDepth).value.trim(),
-      surfaceTemp: React.findDOMNode(this.refs.surfaceTemp).value.trim(),
-      bottomTemp: React.findDOMNode(this.refs.bottomTemp).value.trim(),
+      maxDepth: React.findDOMNode(this.refs.maxDepth).value,
+      bottomTime: React.findDOMNode(this.refs.bottomTime).value,
+      surfaceTemp: React.findDOMNode(this.refs.surfaceTemp).value,
+      bottomTemp: React.findDOMNode(this.refs.bottomTemp).value,
       weather: this.refs.weather.getCheckedValue(),
       divemode: this.refs.divemode.getCheckedValue()
     });
@@ -36,6 +37,10 @@ var DiveForm = React.createClass({
         <label>
           Max Depth
           <input type="number" ref="maxDepth" value={this.props.dive.maxDepth} onChange={this.handleChange} />
+        </label>
+        <label>
+          Bottom Time
+          <input type="number" ref="bottomTime" value={this.props.dive.bottomTime} onChange={this.handleChange} />
         </label>
         <label>
           Surface Temperature

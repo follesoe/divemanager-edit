@@ -4,6 +4,7 @@ var DiveXml = React.createClass({
           +'  xmlns:i="http://www.w3.org/2001/XMLSchema-instance"\r\n'
           +'  xmlns="http://schemas.datacontract.org/2004/07/Suunto.Diving.Dal">\r\n'
           +'  <MaxDepth>' + dive.maxDepth + '</MaxDepth>\r\n'
+          +'  <BottomTime>' + dive.bottomTime + '</BottomTime>\r\n'
           +'  <StartTemperature>' + dive.surfaceTemp + '</StartTemperature>\r\n'
           +'  <BottomTemperature>' + dive.bottomTemp + '</BottomTemperature>\r\n'
           +'  <EndTemperature>' + dive.surfaceTemp + '</EndTemperature>\r\n'
