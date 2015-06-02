@@ -33,7 +33,7 @@ var ImageRadioGroup = React.createClass({
   render: function () {
     var inputNodes = this.props.options.map(function (option) {
       return (
-        <label>
+        <label key={option.value}>
           <span>{option.name}</span>
           <input
             type="radio"
@@ -46,7 +46,7 @@ var ImageRadioGroup = React.createClass({
     }.bind(this));
     return (
       <div>
-        {{inputNodes}}
+        {inputNodes}
       </div>
     );
   }
