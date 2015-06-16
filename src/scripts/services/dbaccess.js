@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var moment = require('moment');
-var sqlite3 = require("sqlite3").verbose();
+var sqlite3 = require('sqlite3').verbose();
 
 var getDives = function (dbPath) {
   var promise = new Promise(function (resolve, reject) {
