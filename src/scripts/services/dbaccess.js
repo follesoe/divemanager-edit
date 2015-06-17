@@ -10,9 +10,10 @@ var getDives = function (dbPath) {
     db.all('SELECT DiveId, StartTime, Duration, Mode, MaxDepth, Note, BottomTemperature, DiveNumberInSerie, Source FROM Dive ORDER BY StartTime DESC', function (err, rows) {
       _(rows).each(function (row) {
         row.Selected = false;
-        row.StartDate = moment((row.StartTime - 621355968000000000)/10000).zone(0).format('DD.MM.YYYY');
-        row.StartTime = moment((row.StartTime - 621355968000000000)/10000).zone(0).format('HH:mm');
+        row.StartDate = moment((row.StartTime - 621355968000000000)/10000).utcOffset(0).format('DD.MM.YYYY');
+        row.StartTime = moment((row.StartTime - 621355968000000000)/10000).utcOffset(0).format('HH:mm');
         row.Duration = moment.utc(0).add(row.Duration, 's').format('HH:mm:ss');
+        row.MaxDepth = Math.round(row.MaxDepth);
         dives.push(row);
       });
       resolve(dives);
