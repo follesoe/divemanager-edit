@@ -27,6 +27,15 @@
       var dbpath = require('./scripts/services/dbpath.js');
       var dbaccess = require('./scripts/services/dbaccess.js');
 
+      var nullDive = {
+        StartTime: 'TODO',
+        MaxDepth: 0,
+        BottomTemperature: 0,
+        Duration: 0,
+        DiveNumberInSerie: 0,
+        Source: 0
+      };
+
       var DiveApp = React.createClass({
         getInitialState: function() {
           return {
@@ -35,14 +44,7 @@
               exists: false,
               path: ''
             },
-            selectedDive: {
-              StartTime: 'TODO',
-              MaxDepth: 0,
-              BottomTemperature: 0,
-              Duration: 0,
-              DiveNumberInSerie: 0,
-              Source: 0
-            }
+            selectedDive: nullDive
           };
         },
         componentDidMount: function() {
@@ -52,14 +54,7 @@
             that.setState({
               dives: dives,
               dbpath: pathResult,
-              selectedDive: {
-                StartTime: 'TODO',
-                MaxDepth: 0,
-                BottomTemperature: 0,
-                Duration: 0,
-                DiveNumberInSerie: 0,
-                Source: 0
-              }
+              selectedDive: dives.length > 0 ? dives[0] : nullDive
             });
           });
         },
