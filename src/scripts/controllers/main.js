@@ -1,7 +1,3 @@
-var fs = require('fs');
-var moment = require('moment');
-var _ = require('lodash');
-var sqlite3 = require('sqlite3').verbose();
 var dbpath = require('./scripts/services/dbpath.js');
 var dbaccess = require('./scripts/services/dbaccess.js');
 
@@ -35,7 +31,6 @@ angular.module('suuntoDMEditor')
 
     if ($scope.fileExists) {
       dbaccess.getDives($scope.file).then(function (dives) {
-        console.log("Then!" + dives.length);
         $scope.dives = dives;
         if (dives.length > 0) {
           $scope.selectedDive = dives[0];
