@@ -93,6 +93,21 @@
         }
       });
 
+      var DiveValue = React.createClass({
+        render: function () {
+          return (
+            <div className="dive-data">
+              <h2>{this.props.label}</h2>
+              <div>
+                <img src={this.props.icon} />
+                <h3>{this.props.value}</h3>
+                <h4>h</h4>
+              </div>
+            </div>
+          );
+        }
+      });
+
       var DiveData = React.createClass({
         render: function () {
           return (
@@ -123,52 +138,35 @@
               </div>
 
               <div className="dive-data-fields">
-                <div className="dive-data">
-                  <h2>Time In</h2>
-                  <div>
-                    <img src="images/timeicon.png" />
-                    <h3>{this.props.selectedDive.StartTime}</h3>
-                    <h4>h</h4>
-                  </div>
-                </div>
-                <div className="dive-data">
-                  <h2>Max Depth</h2>
-                  <div>
-                    <img src="images/depthicon.png" />
-                    <h3>{this.props.selectedDive.MaxDepth}</h3>
-                    <h4>m</h4>
-                  </div>
-                </div>
-                <div className="dive-data">
-                  <h2>Max Depth Temp</h2>
-                  <div>
-                    <img src="images/tempicon.png" />
-                    <h3>{this.props.selectedDive.BottomTemperature}</h3>
-                    <h4>C</h4>
-                  </div>
-                </div>
-                <div className="dive-data">
-                  <h2>Duration</h2>
-                  <div>
-                    <img src="images/timeicon.png" />
-                    <h3>{this.props.selectedDive.Duration}</h3>
-                    <h4>h</h4>
-                  </div>
-                </div>
-                <div className="dive-data">
-                  <h2>Dive In Series</h2>
-                  <div>
-                    <img src="images/numbericon.png" />
-                    <h3>{this.props.selectedDive.DiveNumberInSerie}</h3>
-                  </div>
-                </div>
-                <div className="dive-data">
-                  <h2>Computer</h2>
-                  <div>
-                    <img src="images/computericon.png" />
-                    <h3>{this.props.selectedDive.Source}</h3>
-                  </div>
-                </div>
+                <DiveValue
+                  label="Time In"
+                  icon="images/timeicon.png"
+                  value={this.props.selectedDive.StartTime} />
+
+                <DiveValue
+                  label="Max Depth"
+                  icon="images/depthicon.png"
+                  value={this.props.selectedDive.MaxDepth} />
+
+                <DiveValue
+                  label="Max Depth Temp"
+                  icon="images/tempicon.png"
+                  value={this.props.selectedDive.BottomTemperature} />
+
+                <DiveValue
+                  label="Duration"
+                  icon="images/timeicon.png"
+                  value={this.props.selectedDive.Duration} />
+
+                <DiveValue
+                  label="Dive In Series"
+                  icon="images/numbericon.png"
+                  value={this.props.selectedDive.DiveNumberInSerie} />
+
+                <DiveValue
+                  label="Computer"
+                  icon="images/computericon.png"
+                  value={this.props.selectedDive.Source} />
               </div>
 
               <button className="action">Save Changes</button>
