@@ -4,9 +4,12 @@
     <title>Suunto DM Editor</title>
     <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="styles/app.css">
+    <script src="node_modules/react/dist/JSXTransformer.js"></script>
+    <script src="node_modules/react/dist/react.js"></script>
   </head>
-  <body ng-app="suuntoDMEditor" ng-controller="main">
+  <body id="main">
 
+    <!--
     <div class="not-found" ng-hide="fileExists">
       <h2>Suunto Dive Manager not found</h2>
       <p>
@@ -17,104 +20,173 @@
         <a href="http://www.github.com/TODO">github page</a>.
       </p>
     </div>
+    -->
 
-    <nav ng-show="fileExists">
-      <h1>Your Dives</h1>
-      <small>{{file}}</small>
-      <ul>
-        <li
-          ng-click="select(dive)"
-          ng-class="{selected:dive.Selected}"
-          ng-repeat="dive in dives">
-          <img src="images/modes/{{dive.Mode}}.png" class="mode" />
-          <span>{{dive.StartDate}}</span>
-          <span class="light">{{dive.Duration}} H</span>
-          <span class="light">{{dive.MaxDepth|round}} M</span>
-      </ul>
-    </nav>
+    <script type="text/jsx">
 
-    <section ng-show="fileExists">
-      <h1>Selected Dive</h1>
-      <h2>Dive Mode</h2>
-      <div class="divemodes">
-        <label class="divemode" ng-class="{selectedmode:selectedDive.Mode == 0}">
-          <img src="images/modes/0.png" />
-          <input type="radio" ng-model="selectedDive.Mode" value="0">
-          <h3>air</h3>
-        </label>
-        <label class="divemode" ng-class="{selectedmode:selectedDive.Mode == 1}">
-          <img src="images/modes/1.png" />
-          <input type="radio" ng-model="selectedDive.Mode" value="1">
-          <h3>ean</h3>
-        </label>
-        <label class="divemode" ng-class="{selectedmode:selectedDive.Mode == 2}">
-          <img src="images/modes/2.png" />
-          <input type="radio" ng-model="selectedDive.Mode" value="2">
-          <h3>gauge</h3>
-        </label>
-        <label class="divemode" ng-class="{selectedmode:selectedDive.Mode == 3}">
-          <img src="images/modes/3.png" />
-          <input type="radio" ng-model="selectedDive.Mode" value="3">
-          <h3>free</h3>
-        </label>
-      </div>
+      var dbpath = require('./scripts/services/dbpath.js');
+      var dbaccess = require('./scripts/services/dbaccess.js');
 
-      <div class="dive-data-fields">
-        <div class="dive-data">
-          <h2>Time In</h2>
-          <div>
-            <img src="images/timeicon.png" />
-            <h3>{{selectedDive.StartTime}}</h3>
-            <h4>h</h4>
-          </div>
-        </div>
-        <div class="dive-data">
-          <h2>Max Depth</h2>
-          <div>
-            <img src="images/depthicon.png" />
-            <h3>{{selectedDive.MaxDepth|round}}</h3>
-            <h4>m</h4>
-          </div>
-        </div>
-        <div class="dive-data">
-          <h2>Max Depth Temp</h2>
-          <div>
-            <img src="images/tempicon.png" />
-            <h3>{{selectedDive.BottomTemperature}}</h3>
-            <h4>C</h4>
-          </div>
-        </div>
-        <div class="dive-data">
-          <h2>Duration</h2>
-          <div>
-            <img src="images/timeicon.png" />
-            <h3>{{selectedDive.Duration}}</h3>
-            <h4>h</h4>
-          </div>
-        </div>
-        <div class="dive-data">
-          <h2>Dive In Series</h2>
-          <div>
-            <img src="images/numbericon.png" />
-            <h3>{{selectedDive.DiveNumberInSerie}}</h3>
-          </div>
-        </div>
-        <div class="dive-data">
-          <h2>Computer</h2>
-          <div>
-            <img src="images/computericon.png" />
-            <h3>{{selectedDive.Source}}</h3>
-          </div>
-        </div>
-      </div>
+      var DiveApp = React.createClass({
+        getInitialState: function() {
+          return {
+            dives: [],
+            dbpath: {
+              exists: false,
+              path: ''
+            },
+            selectedDive: {
+              StartTime: 'TODO',
+              MaxDepth: 0,
+              BottomTemperature: 0,
+              Duration: 0,
+              DiveNumberInSerie: 0,
+              Source: 0
+            }
+          };
+        },
+        componentDidMount: function() {
+          var pathResult = dbpath.getPath();
+          var that = this;
+          dbaccess.getDives(pathResult.path).then(function (dives) {
+            that.setState({
+              dives: dives,
+              dbpath: pathResult,
+              selectedDive: {
+                StartTime: 'TODO',
+                MaxDepth: 0,
+                BottomTemperature: 0,
+                Duration: 0,
+                DiveNumberInSerie: 0,
+                Source: 0
+              }
+            });
+          });
+        },
+        render: function() {
+          return (
+            <div>
+              <DiveList data={this.state} />
+              <DiveData selectedDive={this.state.selectedDive} />
+            </div>
+          );
+        }
+      });
 
-      <button ng-click="save()" class="action">Save Changes</button>
-    </section>
-    <script src="node_modules/react/dist/JSXTransformer.js"></script>
-    <script src="node_modules/react/dist/react.js"></script>
-    <script src="node_modules/angular/angular.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/filters/round.js"></script>
+      var DiveList = React.createClass({
+        render: function() {
+          var diveNodes = this.props.data.dives.map(function (dive) {
+            return(
+              <li>
+                <img src={'images/modes/' + dive.Mode + '.png'} className="mode" />
+                <span>{dive.StartDate}</span>
+                <span className="light">{dive.Duration} H</span>
+                <span className="light">{dive.MaxDepth} M</span>
+              </li>
+            );
+          });
+
+          return (
+            <nav>
+              <h1>Your Dives</h1>
+              <small>{this.props.data.dbpath.path}</small>
+              <ul>
+                {diveNodes}
+              </ul>
+            </nav>
+          );
+        }
+      });
+
+      var DiveData = React.createClass({
+        render: function () {
+          return (
+            <section>
+              <h1>Selected Dive</h1>
+              <h2>Dive Mode</h2>
+              <div className="divemodes">
+                <label className="divemode">
+                  <img src="images/modes/0.png" />
+                  <input type="radio" value="0" />
+                  <h3>air</h3>
+                </label>
+                <label className="divemode">
+                  <img src="images/modes/1.png" />
+                  <input type="radio" value="1" />
+                  <h3>ean</h3>
+                </label>
+                <label className="divemode">
+                  <img src="images/modes/2.png" />
+                  <input type="radio" value="2" />
+                  <h3>gauge</h3>
+                </label>
+                <label className="divemode">
+                  <img src="images/modes/3.png" />
+                  <input type="radio" value="3" />
+                  <h3>free</h3>
+                </label>
+              </div>
+
+              <div className="dive-data-fields">
+                <div className="dive-data">
+                  <h2>Time In</h2>
+                  <div>
+                    <img src="images/timeicon.png" />
+                    <h3>{this.props.selectedDive.StartTime}</h3>
+                    <h4>h</h4>
+                  </div>
+                </div>
+                <div className="dive-data">
+                  <h2>Max Depth</h2>
+                  <div>
+                    <img src="images/depthicon.png" />
+                    <h3>{this.props.selectedDive.MaxDepth}</h3>
+                    <h4>m</h4>
+                  </div>
+                </div>
+                <div className="dive-data">
+                  <h2>Max Depth Temp</h2>
+                  <div>
+                    <img src="images/tempicon.png" />
+                    <h3>{this.props.selectedDive.BottomTemperature}</h3>
+                    <h4>C</h4>
+                  </div>
+                </div>
+                <div className="dive-data">
+                  <h2>Duration</h2>
+                  <div>
+                    <img src="images/timeicon.png" />
+                    <h3>{this.props.selectedDive.Duration}</h3>
+                    <h4>h</h4>
+                  </div>
+                </div>
+                <div className="dive-data">
+                  <h2>Dive In Series</h2>
+                  <div>
+                    <img src="images/numbericon.png" />
+                    <h3>{this.props.selectedDive.DiveNumberInSerie}</h3>
+                  </div>
+                </div>
+                <div className="dive-data">
+                  <h2>Computer</h2>
+                  <div>
+                    <img src="images/computericon.png" />
+                    <h3>{this.props.selectedDive.Source}</h3>
+                  </div>
+                </div>
+              </div>
+
+              <button className="action">Save Changes</button>
+            </section>
+          );
+        }
+      });
+
+      React.render(
+        <DiveApp />,
+        document.getElementById('main')
+      );
+    </script>
+
   </body>
 </html>
