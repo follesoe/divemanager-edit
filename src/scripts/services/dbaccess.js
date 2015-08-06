@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var moment = require('moment');
 var sqlite3 = require('sqlite3').verbose();
 
@@ -8,7 +7,7 @@ var getDives = function (dbPath) {
     var dives = [];
 
     db.all('SELECT DiveId, StartTime, Duration, Mode, MaxDepth, Note, BottomTemperature, DiveNumberInSerie, Source FROM Dive ORDER BY StartTime DESC', function (err, rows) {
-      _(rows).each(function (row) {
+      rows.forEach(function (row) {
         row.Selected = false;
         row.StartDate = moment((row.StartTime - 621355968000000000)/10000).utcOffset(0).format('DD.MM.YYYY');
         row.StartTime = moment((row.StartTime - 621355968000000000)/10000).utcOffset(0).format('HH:mm');

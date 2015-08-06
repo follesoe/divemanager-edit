@@ -1,16 +1,10 @@
 var fs = require('fs');
-var _ = require('lodash');
 
 var getFirstSubDirectory = function (fromDir) {
   var content = fs.readdirSync(fromDir);
-
-  var firstSub =
-    _(content)
-      .filter(function (f) { return fs.statSync(fromDir + f).isDirectory(); })
-      .reverse()
-      .first();
-
-  return firstSub;
+  return content.filter(function (f) {
+    return fs.statSync(fromDir + f).isDirectory();
+  }).reverse()[0];
 }
 
 var getPath = function () {

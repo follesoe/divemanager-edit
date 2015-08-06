@@ -22,11 +22,13 @@
     </div>
     -->
 
-    <script type="text/jsx">
+    <script>
+      require('node-jsx').install({extension: '.js'});
+      var app = require('./scripts/app.js');
 
-      var dbpath = require('./scripts/services/dbpath.js');
-      var dbaccess = require('./scripts/services/dbaccess.js');
 
+
+      /*
       var nullDive = {
         StartTime: 'TODO',
         MaxDepth: 0,
@@ -69,17 +71,20 @@
       });
 
       var DiveList = React.createClass({
+        handleClick: function(e) {
+          console.log("Click!");
+        },
         render: function() {
           var diveNodes = this.props.data.dives.map(function (dive) {
             return(
-              <li>
+              <li onClick={this.handleClick} key={dive.DiveId}>
                 <img src={'images/modes/' + dive.Mode + '.png'} className="mode" />
                 <span>{dive.StartDate}</span>
                 <span className="light">{dive.Duration} H</span>
                 <span className="light">{dive.MaxDepth} M</span>
               </li>
             );
-          });
+          }.bind(this));
 
           return (
             <nav>
@@ -178,8 +183,7 @@
       React.render(
         <DiveApp />,
         document.getElementById('main')
-      );
+      );*/
     </script>
-
   </body>
 </html>
