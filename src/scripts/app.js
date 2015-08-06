@@ -44,7 +44,7 @@ var DiveListItem = component('DiveListItem', function (props) {
   return (
     <li onClick={selection}>
       <img src={'images/modes/' + dive.get('Mode') + '.png'} className="mode" />
-      <span>...</span>
+      <span>{dive.get('StartDate')}</span>
       <span className="light">{dive.get('Duration')} H</span>
       <span className="light">{dive.get('MaxDepth')} M</span>
     </li>
@@ -56,13 +56,17 @@ var DiveList = component('DiveList', function (props) {
     return updateSelected(props.selectedDiveId, newSelectionId);
   }
   return (
-    <ul>
-      {
-        props.dives.toArray().map(function (dive) {
-          return <DiveListItem key={dive.get('DiveId')} dive={dive} onChange={onSelectionChange} />
-        })
-      }
-    </ul>
+    <nav>
+      <h1>Your Dives</h1>
+      <small>{props.dbpath.valueOf()}</small>
+      <ul>
+        {
+          props.dives.toArray().map(function (dive) {
+            return <DiveListItem key={dive.get('DiveId')} dive={dive} onChange={onSelectionChange} />
+          })
+        }
+      </ul>
+    </nav>
   );
 });
 
@@ -87,6 +91,7 @@ var DiveApp = component('DiveApp', function (props) {
     <section>
       <DiveList
         dives={appState.cursor('dives')}
+        dbpath={appState.cursor('dbpath')}
         selectedDiveId={appState.cursor('selectedDiveId')} />
 
       <DiveDetails dive={selectedDive} />
