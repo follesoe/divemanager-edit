@@ -71,24 +71,28 @@ var DiveList = component('DiveList', function (props) {
 });
 
 var DiveModeRadioButton = component('DiveModeRadioButton', function (props) {
-  var value = props.value;
-  var label = props.label;
+  var classes = 'divemode';
+  if (props.selected) {
+    classes += ' selectedmode';
+  }
+
   return (
-    <label className="divemode">
-      <img src={'images/modes/' + value + '.png'} />
-      <input type="radio" value="{value}" />
-      <h3>{label}</h3>
+    <label className={classes}>
+      <img src={'images/modes/' + props.value + '.png'} />
+      <input type="radio" value="{props.value}" />
+      <h3>{props.label}</h3>
     </label>
   )
 });
 
 var DiveMode = component('DiveMode', function (props) {
+  var dive = props.dive;
   return (
     <div className="divemodes">
-      <DiveModeRadioButton value="0" label="air" />
-      <DiveModeRadioButton value="1" label="ean" />
-      <DiveModeRadioButton value="2" label="gauge" />
-      <DiveModeRadioButton value="3" label="free" />
+      <DiveModeRadioButton value="0" label="air" selected={dive.get('Mode') == 0} />
+      <DiveModeRadioButton value="1" label="ean" selected={dive.get('Mode') == 1} />
+      <DiveModeRadioButton value="2" label="gauge" selected={dive.get('Mode') == 2} />
+      <DiveModeRadioButton value="3" label="free" selected={dive.get('Mode') == 3} />
     </div>
   );
 });
