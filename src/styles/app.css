@@ -158,10 +158,6 @@ label.divemode {
   margin-right: 16px;
 }
 
-label.divemode input {
-  display: none;
-}
-
 label.divemode img {
   transition: 0.25s all;
   opacity: 0.15;

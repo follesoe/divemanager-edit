@@ -23,7 +23,9 @@ var structure = immstruct({
   dbpath: ''
 });
 
+
 var pathResult = dbpath.getPath();
+
 dbaccess.getDives(pathResult.path).then(function (dives) {
   structure.cursor().merge({
     dives: dives,
@@ -31,6 +33,11 @@ dbaccess.getDives(pathResult.path).then(function (dives) {
     selectedDiveId: dives.length > 0 ? dives[0].DiveId : -1
   });
 });
+
+function save(dive) {
+  debugger;
+  return dbaccess.saveDive(pathResult.path, dive.toJS());
+}
 
 function updateSelected (selectedDiveId, newSelectionId) {
   return selectedDiveId.update(function () {
@@ -71,15 +78,13 @@ var DiveList = component('DiveList', function (props) {
 });
 
 var DiveModeRadioButton = component('DiveModeRadioButton', function (props) {
-  var classes = 'divemode';
-  if (props.selected) {
-    classes += ' selectedmode';
-  }
+  var classes = props.selected ? 'divemode selectedmode' : 'divemode';
+
+  var onClick = props.onClick.bind(null, props.value);
 
   return (
-    <label className={classes}>
+    <label className={classes} onClick={onClick}>
       <img src={'images/modes/' + props.value + '.png'} />
-      <input type="radio" value="{props.value}" />
       <h3>{props.label}</h3>
     </label>
   )
@@ -87,12 +92,16 @@ var DiveModeRadioButton = component('DiveModeRadioButton', function (props) {
 
 var DiveMode = component('DiveMode', function (props) {
   var dive = props.dive;
+  function onClick(selectedValue) {
+    dive.set('Mode', selectedValue);
+  }
+
   return (
     <div className="divemodes">
-      <DiveModeRadioButton value="0" label="air" selected={dive.get('Mode') == 0} />
-      <DiveModeRadioButton value="1" label="ean" selected={dive.get('Mode') == 1} />
-      <DiveModeRadioButton value="2" label="gauge" selected={dive.get('Mode') == 2} />
-      <DiveModeRadioButton value="3" label="free" selected={dive.get('Mode') == 3} />
+      <DiveModeRadioButton value={0} label="air" selected={dive.get('Mode') == 0} onClick={onClick} />
+      <DiveModeRadioButton value={1} label="ean" selected={dive.get('Mode') == 1} onClick={onClick} />
+      <DiveModeRadioButton value={2} label="gauge" selected={dive.get('Mode') == 2} onClick={onClick} />
+      <DiveModeRadioButton value={3} label="free" selected={dive.get('Mode') == 3} onClick={onClick} />
     </div>
   );
 });
@@ -113,6 +122,9 @@ var DiveValue = component('DiveValue', function (props) {
 
 var DiveDetails = component('DiveDetails', function (props) {
   var dive = props.dive;
+
+  var saveAction = save.bind(null, dive);
+
   return (
     <section>
       <h1>Selected Dive</h1>
@@ -125,7 +137,7 @@ var DiveDetails = component('DiveDetails', function (props) {
         <DiveValue label="Duration" unit="h" icon="timeicon" value={dive.get('Duration')} />
         <DiveValue label="Dive In Series" unit="" icon="numbericon" value={dive.get('DiveNumberInSerie')} />
         <DiveValue label="Computer" unit="" icon="computericon" value={dive.get('Source')} />
-        <button className="action">Save Changes</button>
+        <button className="action" onClick={saveAction}>Save Changes</button>
       </div>
     </section>
   );
