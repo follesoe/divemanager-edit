@@ -16,3 +16,5 @@ lib/
 SuuntoDMEditor
 *.nw
 *.app
+
+.DS_Store

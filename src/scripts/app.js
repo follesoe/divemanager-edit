@@ -35,7 +35,6 @@ dbaccess.getDives(pathResult.path).then(function (dives) {
 });
 
 function save(dive) {
-  debugger;
   return dbaccess.saveDive(pathResult.path, dive.toJS());
 }
 
@@ -143,6 +142,19 @@ var DiveDetails = component('DiveDetails', function (props) {
   );
 });
 
+var DbMissing = component('DbMissing', function (props) {
+  return (
+    <div class="not-found">
+      <h2>Suunto Dive Manager not found</h2>
+      <p>The application could not find Suunto Dive Manager installed on your computer.</p>
+      <p>
+        If you do have it installed this must be a bug. Please submit an issue on the projects
+        <a href="http://www.github.com/TODO">github page</a>.
+      </p>
+    </div>
+  );
+});
+
 var DiveApp = component('DiveApp', function (props) {
   var appState = props.cursor;
   var selectedDiveId = appState.get('selectedDiveId');
@@ -150,16 +162,20 @@ var DiveApp = component('DiveApp', function (props) {
     return dive.get('DiveId') === selectedDiveId;
   }) || appState.cursor('nullDive');
 
-  return (
-    <div>
-      <DiveList
-        dives={appState.cursor('dives')}
-        dbpath={appState.cursor('dbpath')}
-        selectedDiveId={appState.cursor('selectedDiveId')} />
+  if (appState.getIn(['dbpath', 'exists'], false)) {
+    return (
+      <div>
+        <DiveList
+          dives={appState.cursor('dives')}
+          dbpath={appState.cursor('dbpath')}
+          selectedDiveId={appState.cursor('selectedDiveId')} />
 
-      <DiveDetails dive={selectedDive} />
-    </div>
-  );
+        <DiveDetails dive={selectedDive} />
+      </div>
+    );
+  }
+
+  return <DbMissing />;
 });
 
 function render () {
