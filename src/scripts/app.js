@@ -5,7 +5,7 @@ var immutable   = require('immutable');
 var omniscient  = require('../node_modules/omniscient/dist/omniscient');
 var React       = window.React;
 var document    = window.document;
-var component = omniscient.withDefaults({jsx: true});
+var component   = omniscient.withDefaults({jsx: true});
 
 var nullDive = {
   StartTime: 'TODO',
@@ -70,12 +70,35 @@ var DiveList = component('DiveList', function (props) {
   );
 });
 
+var DiveModeRadioButton = component('DiveModeRadioButton', function (props) {
+  var value = props.value;
+  var label = props.label;
+  return (
+    <label className="divemode">
+      <img src={'images/modes/' + value + '.png'} />
+      <input type="radio" value="{value}" />
+      <h3>{label}</h3>
+    </label>
+  )
+});
+
+var DiveMode = component('DiveMode', function (props) {
+  return (
+    <div className="divemodes">
+      <DiveModeRadioButton value="0" label="air" />
+      <DiveModeRadioButton value="1" label="ean" />
+      <DiveModeRadioButton value="2" label="gauge" />
+      <DiveModeRadioButton value="3" label="free" />
+    </div>
+  );
+});
+
 var DiveValue = component('DiveValue', function (props) {
   return (
     <div className="dive-data">
       <h2>{this.props.label}</h2>
       <div>
-        <img src={this.props.icon} />
+        <img src={'images/' + this.props.icon + '.png'} />
         <h3>{this.props.value.valueOf()}</h3>
         <h4>{this.props.unit}</h4>
       </div>
@@ -83,74 +106,21 @@ var DiveValue = component('DiveValue', function (props) {
   );
 });
 
+
 var DiveDetails = component('DiveDetails', function (props) {
   var dive = props.dive;
-  /*function onClick() {
-    return dive.set('Mode', 3);
-  }*/
   return (
     <section>
       <h1>Selected Dive</h1>
       <h2>Dive Mode</h2>
-      <div className="divemodes">
-        <label className="divemode">
-          <img src="images/modes/0.png" />
-          <input type="radio" value="0" />
-          <h3>air</h3>
-        </label>
-        <label className="divemode">
-          <img src="images/modes/1.png" />
-          <input type="radio" value="1" />
-          <h3>ean</h3>
-        </label>
-        <label className="divemode">
-          <img src="images/modes/2.png" />
-          <input type="radio" value="2" />
-          <h3>gauge</h3>
-        </label>
-        <label className="divemode">
-          <img src="images/modes/3.png" />
-          <input type="radio" value="3" />
-          <h3>free</h3>
-        </label>
-      </div>
+      <DiveMode dive={dive} />
       <div className="dive-data-fields">
-        <DiveValue
-          label="Time In"
-          unit="h"
-          icon="images/timeicon.png"
-          value={dive.get('StartTime')} />
-
-        <DiveValue
-          label="Max Depth"
-          unit="m"
-          icon="images/depthicon.png"
-          value={dive.get('MaxDepth')} />
-
-        <DiveValue
-          label="Max Depth Temp"
-          unit="C"
-          icon="images/tempicon.png"
-          value={dive.get('BottomTemperature')} />
-
-        <DiveValue
-          label="Duration"
-          unit="h"
-          icon="images/timeicon.png"
-          value={dive.get('Duration')} />
-
-        <DiveValue
-          label="Dive In Series"
-          unit=""
-          icon="images/numbericon.png"
-          value={dive.get('DiveNumberInSerie')} />
-
-        <DiveValue
-          label="Computer"
-          unit=""
-          icon="images/computericon.png"
-          value={dive.get('Source')} />
-
+        <DiveValue label="Time In" unit="h" icon="timeicon" value={dive.get('StartTime')} />
+        <DiveValue label="Max Depth" unit="m" icon="depthicon" value={dive.get('MaxDepth')} />
+        <DiveValue label="Max Depth Temp" unit="C" icon="tempicon" value={dive.get('BottomTemperature')} />
+        <DiveValue label="Duration" unit="h" icon="timeicon" value={dive.get('Duration')} />
+        <DiveValue label="Dive In Series" unit="" icon="numbericon" value={dive.get('DiveNumberInSerie')} />
+        <DiveValue label="Computer" unit="" icon="computericon" value={dive.get('Source')} />
         <button className="action">Save Changes</button>
       </div>
     </section>
