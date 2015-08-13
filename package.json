@@ -2,10 +2,13 @@
   "name": "SuuntoDMEditor-Build",
   "description": "SuntoDM Editor Build System",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "omniscient": "^3.3.0",
+    "react": "^0.13.3"
+  },
   "devDependencies": {},
   "scripts": {
-    "build" : "./build.sh",
-    "icns" : "iconutil -c icns main.iconset && mv main.icns SuuntoDMEditor.app/Contents/Resources"
+    "build": "./build.sh",
+    "icns": "iconutil -c icns main.iconset && mv main.icns SuuntoDMEditor.app/Contents/Resources"
   }
 }

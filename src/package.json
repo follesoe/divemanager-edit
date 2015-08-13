@@ -9,7 +9,7 @@
     "moment": "^2.8.3",
     "node-jsx": "^0.13.3",
     "normalize.css": "^3.0.3",
-    "omniscient": "^3.2.0",
+    "omniscient": "^3.3.0",
     "react": "^0.13.3"
   },
   "author": {
