@@ -8,18 +8,16 @@ var omniscient  = require('omniscient/component')(React);
 var component   = omniscient.withDefaults({jsx: true});
 var DiveApp     = require('./components/DiveApp');
 
-var nullDive = {
-  StartTime: 'TODO',
-  MaxDepth: 0,
-  BottomTemperature: 0,
-  Duration: 0,
-  DiveNumberInSerie: 0,
-  Source: 0
-};
-
 var structure = immstruct({
   selectedDiveId: -1,
-  nullDive: nullDive,
+  nullDive: {
+    StartTime: 'TODO',
+    MaxDepth: 0,
+    BottomTemperature: 0,
+    Duration: 0,
+    DiveNumberInSerie: 0,
+    Source: 0
+  },
   dives: [],
   dbpath: ''
 });
