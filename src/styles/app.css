@@ -26,7 +26,7 @@ a {
 
 nav {
   position: absolute;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 100%;
   width: 40%;
   top: 0;
