@@ -39,7 +39,7 @@ function save(dive) {
 function render () {
   React.render(
     <DiveApp cursor={structure.cursor()} onSave={save} />,
-    document.body
+    document.getElementById('main')
   );
 }
 

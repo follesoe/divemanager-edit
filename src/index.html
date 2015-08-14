@@ -8,7 +8,8 @@
     <script src="node_modules/react/dist/react.js"></script>
     <script src="scripts/nwjs/menu.js"></script>
   </head>
-  <body id="main">
+  <body>
+    <div id="main"></div>
     <script>
       var dbpath = require('./scripts/services/dbpath'),
           gui    = require('nw.gui'),
@@ -35,7 +36,7 @@
           alert('Backup!');
         }
       }));
-      
+
       menubar.append(new gui.MenuItem({label: 'File', submenu: file}));
       win.menu = menubar;
 
