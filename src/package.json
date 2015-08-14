@@ -1,5 +1,4 @@
 {
-  "name": "SuuntoDMEditor",
   "description": "Application to edit the Suunto Dive Manager database",
   "version": "0.0.2",
   "main": "index.html",
@@ -16,6 +15,7 @@
     "name": "Jonas Follesø",
     "url": "https://github.com/follesoe/divemanager-edit"
   },
+  "name": "SuuntoDMEditor",
   "window": {
     "title": "Suunto Dive Manager Editor",
     "toolbar": true,
