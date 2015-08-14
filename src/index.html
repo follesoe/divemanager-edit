@@ -6,19 +6,26 @@
     <link rel="stylesheet" href="styles/app.css">
     <script src="node_modules/react/dist/JSXTransformer.js"></script>
     <script src="node_modules/react/dist/react.js"></script>
+    <script src="scripts/nwjs/menu.js"></script>
   </head>
   <body id="main">
     <script>
-      var gui = require('nw.gui');
-      var win = gui.Window.get();
+      var dbpath = require('./scripts/services/dbpath'),
+          gui    = require('nw.gui'),
+          win    = gui.Window.get();
 
+      var pathResult = dbpath.getPath();
       var menubar = new gui.Menu({ type: 'menubar' });
 
       var file = new gui.Menu();
       file.append(new gui.MenuItem({
         label: 'Open Dive Manager Folder',
         click: function () {
-          alert('Open Folder!');
+          if (pathResult.exists) {
+            gui.Shell.showItemInFolder(pathResult.path);
+          } else {
+            alert('Suunto Dive Manager not found on computer');
+          }
         }
       }));
 
@@ -28,17 +35,8 @@
           alert('Backup!');
         }
       }));
-
-      var help = new gui.Menu();
-      help.append(new gui.MenuItem({
-        label: 'About Dive Manager Edit',
-        click: function () {
-          alert('About!');
-        }
-      }));
-      console.log(win.menu);
+      
       menubar.append(new gui.MenuItem({label: 'File', submenu: file}));
-      menubar.append(new gui.MenuItem({label: 'Help', submenu: help}));
       win.menu = menubar;
 
       require('node-jsx').install({extension: '.js'});
