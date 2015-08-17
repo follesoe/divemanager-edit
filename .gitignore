@@ -9,6 +9,7 @@ cache/
 
 /cache
 /releases
+/output
 
 nbproject
 lib/
@@ -16,5 +17,7 @@ lib/
 SuuntoDMEditor
 *.nw
 *.app
+
+*.icns
 
 .DS_Store

@@ -2,13 +2,16 @@
   "name": "SuuntoDMEditor-Build",
   "description": "SuntoDM Editor Build System",
   "version": "0.0.1",
-  "dependencies": {
-    "omniscient": "^3.3.0",
-    "react": "^0.13.3"
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^1.2.1",
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.4.2",
+    "gulp-util": "^3.0.6",
+    "nw-builder": "^2.0.2"
   },
-  "devDependencies": {},
   "scripts": {
-    "build": "./build.sh",
-    "icns": "iconutil -c icns main.iconset && mv main.icns SuuntoDMEditor.app/Contents/Resources"
+    "build": "gulp nw",
+    "icons": "gulp icons"
   }
 }
