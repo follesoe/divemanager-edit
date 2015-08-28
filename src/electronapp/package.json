@@ -1,8 +1,8 @@
 {
   "name": "SuuntoDMEditor",
-  "description": "Application to edit the Suunto Dive Manager database (nwjs version)",
+  "description": "Application to edit the Suunto Dive Manager database (electron version)",
   "version": "0.0.2",
-  "main": "index.html",
+  "main": "main.js",
   "dependencies": {
     "SuuntoDMEditorShared": "file:../shared",
     "immstruct": "^2.0.0",

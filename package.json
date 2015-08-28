@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build": "gulp nw",
-    "icons": "gulp icons"
+    "icons": "gulp icons",
+    "electron": "electron src/electronapp"
   }
 }
