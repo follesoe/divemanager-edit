@@ -14,7 +14,7 @@ gulp.task('icons', shell.task([
 
 gulp.task('nw', ['clean', 'icons'], function () {
   var nw = new NwBuilder({
-    files: './src/**',
+    files: './src/nwjsapp/**',
     buildDir: './output/nwjs',
     macIcns: './icons/main.icns',
     platforms: ['osx64']

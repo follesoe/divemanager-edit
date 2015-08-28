@@ -1,25 +1,17 @@
 {
-  "description": "Application to edit the Suunto Dive Manager database",
+  "name": "SuuntoDMEditorShared",
+  "description": "Shared components for Suunto Dive Manager App",
   "version": "0.0.2",
-  "main": "index.html",
   "dependencies": {
     "immstruct": "^2.0.0",
     "immutable": "^3.7.4",
     "moment": "^2.8.3",
     "node-jsx": "^0.13.3",
-    "normalize.css": "^3.0.3",
     "omniscient": "^3.3.0",
     "react": "^0.13.3"
   },
   "author": {
     "name": "Jonas Follesø",
     "url": "https://github.com/follesoe/divemanager-edit"
-  },
-  "name": "SuuntoDMEditor",
-  "window": {
-    "title": "Suunto Dive Manager Editor",
-    "toolbar": true,
-    "width": 1024,
-    "height": 720
   }
 }

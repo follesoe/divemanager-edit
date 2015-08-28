@@ -3,7 +3,7 @@
   <head>
     <title>Suunto DM Editor</title>
     <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
-    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="node_modules/SuuntoDMEditorShared/styles/app.css">
     <script src="node_modules/react/dist/JSXTransformer.js"></script>
     <script src="node_modules/react/dist/react.js"></script>
   </head>
@@ -11,7 +11,7 @@
     <div id="main"></div>
     <input type="file" id="backupFile" nwsaveas="Dive-Manager-Backup.db" />
     <script>
-      var dbpath = require('./scripts/services/dbpath'),
+      var dbpath = require('SuuntoDMEditorShared/services/dbpath'),
           fs     = require('fs'),
           gui    = require('nw.gui'),
           win    = gui.Window.get();
@@ -54,7 +54,7 @@
       win.menu = menubar;
 
       require('node-jsx').install({extension: '.js'});
-      var app = require('./scripts/app.js');
+      var app = require('./app.js');
     </script>
   </body>
 </html>
