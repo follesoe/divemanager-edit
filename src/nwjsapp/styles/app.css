@@ -1,0 +1,201 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+  background-color: #1C1C1C;
+  color: rgb(235, 235, 235);
+  margin: 0;
+
+  font-family: 'Helvetica Light', 'Lucida Grande', Arial, Tahoma, Verdana;
+  font-size: 17px;
+}
+
+a {
+  color: #ad1b24;
+}
+
+#main {
+  display: flex;
+  height: 100%;
+  max-height: 100%;
+}
+
+nav {
+  position: absolute;
+  overflow-y: auto;
+  height: 100%;
+  width: 40%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+h1, h2 {
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 24px 0 6px 0;
+}
+
+section h1 {
+  margin-bottom: 26px;
+}
+
+nav h1 {
+  margin-left: 12px;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 28px;
+  margin: 6px 0;
+}
+
+small {
+  font-size: 10px;
+  margin-left: 12px;
+  color: #363636;
+}
+
+section {
+  margin-left: 40%;
+  padding-left: 12px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  transition: 0.25s all;
+  margin: 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+li:nth-child(odd) {
+  background-color: #252525;
+}
+
+li:hover {
+  background-color: #363636;
+}
+
+li.selected {
+  background-color: #ad1b24;
+}
+
+li span {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+span.light {
+  color: #6abfda;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+li.selected span.light {
+  color: white;
+}
+
+img.mode {
+  width: 42px;
+}
+
+img.subicon {
+  width: 30px;
+  padding-right: 6px;
+}
+
+.dive-data-fields {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.dive-data {
+  min-width: 300px;
+  margin-bottom: 32px;
+}
+
+.dive-data img {
+  width: 42px;
+}
+
+.dive-data div {
+  display: flex;
+  align-items: center;
+}
+
+.dive-data h3 {
+  margin: 0 0 0 16px;
+  font-size: 26px;
+}
+
+.dive-data h4 {
+  color: #363636;
+  margin: 0 0 0 8px;
+  font-size: 22px;
+}
+
+div.divemodes {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+label.divemode {
+  margin-right: 16px;
+}
+
+label.divemode img {
+  transition: 0.25s all;
+  opacity: 0.15;
+}
+
+label.divemode h3 {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 6px 0;
+}
+
+label.selectedmode img {
+  opacity: 1.0 !important;
+}
+
+button {
+  padding: 7px 12px;
+  border: 1px solid #363636;
+  border-color: transparent;
+  background-color: #525252;
+  color: #e6e6e6;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.35);
+  transition: border .2s ease-out;
+  display: inline-block;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+}
+
+button.action {
+  background-color: #ad1b24;
+  border-color: #ad1b24;
+}
+
+.not-found {
+  margin: 24px 24px;
+}

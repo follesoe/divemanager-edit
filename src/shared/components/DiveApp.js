@@ -1,4 +1,4 @@
-var React       = window.React,
+  var React       = window.React,
     omniscient  = require('omniscient/component')(React),
     component   = omniscient.withDefaults({jsx: true}),
     DiveList    = require('./DiveList'),
