@@ -5,7 +5,7 @@ var shell = require('gulp-shell');
 var del = require('del');
 
 gulp.task('clean', function (cb) {
-  del(['output'], cb);
+  del(['output/**'], cb);
 });
 
 gulp.task('icons', shell.task([
@@ -14,7 +14,8 @@ gulp.task('icons', shell.task([
 
 gulp.task('nw', ['clean', 'icons'], function () {
   var nw = new NwBuilder({
-    files: './src/nwjsapp/**',
+    version: '0.12.2',
+    files: './src/nwjsapp/**/**',
     buildDir: './output/nwjs',
     macIcns: './icons/main.icns',
     platforms: ['osx64']

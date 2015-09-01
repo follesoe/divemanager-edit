@@ -19,7 +19,7 @@
   },
   "window": {
     "title": "Suunto Dive Manager Editor",
-    "toolbar": true,
+    "toolbar": false,
     "width": 1024,
     "height": 720
   }
