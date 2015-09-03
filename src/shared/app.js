@@ -1,12 +1,12 @@
-var dbpath      = require('SuuntoDMEditorShared/services/dbpath');
-var dbaccess    = require('SuuntoDMEditorShared/services/dbaccess');
+var dbpath      = require('./services/dbpath');
+var dbaccess    = require('./services/dbaccess');
 var immstruct   = require('immstruct');
 var immutable   = require('immutable');
 var document    = window.document;
-var React       = window.React;
+var React       = window.React || require('react');
 var omniscient  = require('omniscient/component')(React);
 var component   = omniscient.withDefaults({jsx: true});
-var DiveApp     = require('SuuntoDMEditorShared/components/DiveApp');
+var DiveApp     = require('./components/DiveApp');
 
 var structure = immstruct({
   selectedDiveId: -1,

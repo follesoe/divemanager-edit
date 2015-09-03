@@ -14,6 +14,10 @@ body {
   font-size: 17px;
 }
 
+input {
+  display: none;
+}
+
 a {
   color: #ad1b24;
 }

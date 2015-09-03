@@ -1,4 +1,4 @@
-var React         = window.React,
+var React         = window.React || require('react'),
     omniscient    = require('omniscient/component')(React),
     component     = omniscient.withDefaults({jsx: true});
 

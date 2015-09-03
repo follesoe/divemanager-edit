@@ -30,4 +30,8 @@ app.on('ready', function() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  mainWindow.on('error', function(error) {
+    console.log(error);
+  });
 });

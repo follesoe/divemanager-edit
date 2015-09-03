@@ -1,4 +1,4 @@
-var React         = window.React,
+var React         = window.React || require('react'),
     omniscient    = require('omniscient/component')(React),
     component     = omniscient.withDefaults({jsx: true}),
     DiveListItem  = require('./DiveListItem');
@@ -13,7 +13,7 @@ var DiveList = component('DiveList', function (props) {
   function onSelectionChange (newSelectionId) {
     return updateSelected(props.selectedDiveId, newSelectionId);
   }
-  
+
   return (
     <nav>
       <h1>Your Dives</h1>

@@ -1,9 +1,9 @@
-  var React       = window.React,
+var React       = window.React  || require('react'),
     omniscient  = require('omniscient/component')(React),
     component   = omniscient.withDefaults({jsx: true}),
     DiveList    = require('./DiveList'),
     DbMissing   = require('./DbMissing'),
-    DiveDetails    = require('./DiveDetails');
+    DiveDetails = require('./DiveDetails');
 
 var DiveApp = component('DiveApp', function (props) {
   var appState = props.cursor;
