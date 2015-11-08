@@ -8,6 +8,10 @@ var omniscient  = require('omniscient/component')(React);
 var component   = omniscient.withDefaults({jsx: true});
 var DiveApp     = require('./components/DiveApp');
 
+var ipc = require('ipc');
+var remote = require('remote');
+var app = remote.require('app');
+
 var structure = immstruct({
   selectedDiveId: -1,
   nullDive: {
