@@ -1,7 +1,11 @@
 {
   "name": "SuuntoDMEditor",
   "description": "Application to edit the Suunto Dive Manager database (electron version)",
-  "version": "0.0.2",
+  "author": {
+    "name": "Jonas Follesø",
+    "url": "https://github.com/follesoe/divemanager-edit"
+  },
+  "version": "0.0.3",
   "main": "main.js",
   "dependencies": {
     "electron-debug": "^0.4.0",
@@ -14,18 +18,17 @@
     "react": "^0.13.3",
     "sqlite3": "^3.1.1"
   },
-  "author": {
-    "name": "Jonas Follesø",
-    "url": "https://github.com/follesoe/divemanager-edit"
-  },
-  "window": {
-    "title": "Suunto Dive Manager Editor",
-    "toolbar": true,
-    "width": 1024,
-    "height": 720
+  "devDependencies": {
+    "del": "^1.2.1",
+    "electron-prebuilt": "^0.34.3",
+    "electron-rebuild": "^1.0.2",
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.4.3",
+    "gulp-util": "^3.0.7"
   },
   "scripts": {
-    "electron-rebuild": "electron-rebuild",
-    "rebuild-sqlite3": "cd node_modules/sqlite3 && npm run prepublish && node-gyp configure --module_name=node_sqlite3 --module_path=../lib/binding/node-v45-darwin-x64 && node-gyp rebuild --target=0.27.1 --arch=x64 --target_platform=darwin --dist-url=https://atom.io/download/atom-shell --module_name=node_sqlite3 --module_path=../lib/binding/node-v45-darwin-x64"
+    "electron-rebuild": "node ./node_modules/.bin/electron-rebuild",
+    "icons": "gulp icons",
+    "start": "electron ."
   }
 }
