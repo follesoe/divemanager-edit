@@ -7,7 +7,7 @@ var DiveListItem = component('DiveListItem', function (props) {
   var selection = props.onChange.bind(null, dive.get('DiveId'));
   return (
     <li onClick={selection}>
-      <img src={'./node_modules/SuuntoDMEditorShared/images/modes/' + dive.get('Mode') + '.png'} className="mode" />
+      <img src={'./images/modes/' + dive.get('Mode') + '.png'} className="mode" />
       <span>{dive.get('StartDate')}</span>
       <span className="light">{dive.get('Duration')} H</span>
       <span className="light">{dive.get('MaxDepth')} M</span>
