@@ -1,6 +1,10 @@
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 
+require('electron-debug')({
+    showDevTools: true
+});
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is GCed.
 var mainWindow = null;

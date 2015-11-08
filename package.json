@@ -5,15 +5,13 @@
   "dependencies": {},
   "devDependencies": {
     "del": "^1.2.1",
-    "electron-prebuilt": "^0.31.1",
+    "electron-prebuilt": "^0.34.3",
     "gulp": "^3.9.0",
-    "gulp-shell": "^0.4.2",
-    "gulp-util": "^3.0.6",
-    "nw-builder": "^2.0.2"
+    "gulp-shell": "^0.4.3",
+    "gulp-util": "^3.0.7"
   },
   "scripts": {
-    "build": "gulp nw",
     "icons": "gulp icons",
-    "electron": "electron src/electronapp"    
+    "electron": "electron src/electronapp"
   }
 }
