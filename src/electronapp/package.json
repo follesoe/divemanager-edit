@@ -30,6 +30,7 @@
   "scripts": {
     "electron-rebuild": "node ./node_modules/.bin/electron-rebuild",
     "build-mac": "electron-packager . SuuntoDMEditor --platform=darwin --arch=all --version=0.34.3 --out=../../output --icon=icons/main.icns",
+    "build-win": "electron-packager . SuuntoDMEditor --platform=win --arch=all --version=0.34.3 --out=../../output --icon=icons/main.ico",
     "icons": "gulp icons",
     "start": "electron ."
   }
