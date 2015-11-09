@@ -11,5 +11,20 @@
       require('node-jsx').install({extension: '.js'});
       var app = require('./app.js');
     </script>
+    <script>
+      var remote = require('remote');
+      var Menu = remote.require('menu');
+
+      var template = [
+        { label: "Backup Database" },
+        { label: "Open Database Folder" }
+      ];
+      
+      var menu = Menu.buildFromTemplate(template);
+      window.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        menu.popup(remote.getCurrentWindow());
+      }, false);
+    </script>
   </body>
 </html>
