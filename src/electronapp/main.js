@@ -26,4 +26,8 @@ app.on('ready', function() {
   mainWindow.on('error', function(error) {
     console.log(error);
   });
+
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.setTitle(app.getName() + ' - ' + app.getVersion());
+  });
 });

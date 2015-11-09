@@ -26,7 +26,7 @@ if (process.platform == 'darwin') {
   var platform = os.platform() + '_' + os.arch();
   var version = app.getVersion();
   try {
-    autoUpdater.setFeedUrl('https://suuntodmeditornuts.herokuapp.com//update/'+platform+'/'+version);
+    autoUpdater.setFeedUrl('https://suuntodmeditornuts.herokuapp.com/update/'+platform+'/'+version);
   }  catch(err) {
     console.log(err);
   }
