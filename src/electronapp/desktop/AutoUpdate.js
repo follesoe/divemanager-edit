@@ -17,29 +17,30 @@ if (process.platform == 'darwin') {
     console.log('error', e, m);
   });
 
-  autoUpdater.on('checking-for-update', function(e, m) {
+  autoUpdater.on('checking-for-update', function(e) {
     msg.message = 'Checking for update';
     notifier.notify(msg);
-    console.log('checking-for-update', e, m);
+    console.log('checking-for-update');
   });
 
-  autoUpdater.on('update-available', function(e, m) {
+  autoUpdater.on('update-available', function(e) {
     msg.message = 'Downloading update';
     notifier.notify(msg);
-    console.log('update-available', e, m);
+    console.log('update-available');
   });
 
-  autoUpdater.on('update-not-available', function(e, m) {
+  autoUpdater.on('update-not-available', function(e) {
     msg.message = 'Update not available';
     notifier.notify(msg);
-    console.log('update-not-available', e, m);
+    console.log('update-not-available');
   });
 
-  autoUpdater.on('update-downloaded', function(e, m) {
-    msg.message = 'Update downloaded, installing';
+  autoUpdater.on('update-downloaded', function(e, releaseNotes, releaseName, releaseDate, updateUrl, quitAndUpdate) {
+    console.log('update-downloaded');
+    msg.title = releaseName + " downloaded, installing";
+    msg.message = releaseNotes;
     notifier.notify(msg);
     autoUpdater.quitAndInstall();
-    console.log('update-downloaded', e, m);
   });
 
   var platform = os.platform() + '_' + os.arch();
