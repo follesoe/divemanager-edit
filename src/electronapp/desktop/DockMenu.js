@@ -2,13 +2,12 @@ var app = require('app');
 var Menu = require('menu');
 
 app.on('ready', function() {
-  var template = [
-    { label: 'New Window', click: function() { console.log('New Window'); } },
-    { label: 'New Window with Settings', submenu: [
-      { label: 'Basic' },
-      { label: 'Pro'}
-    ]},
-    { label: 'New Command...'}
+  var template = [{
+    label: "Suunto Dive Manager",
+    submenu: [
+        { label: "Backup Database" },
+        { label: "Open Database Folder" },
+    ]}
   ];
 
   var dockMenu = Menu.buildFromTemplate(template);

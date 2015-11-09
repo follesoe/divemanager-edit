@@ -4,6 +4,7 @@ var BrowserWindow = require('browser-window');
 
 require('./desktop/AppMenu');
 require('./desktop/DockMenu');
+require('./desktop/TrayMenu');
 
 var mainWindow = null;
 
@@ -25,18 +26,3 @@ app.on('ready', function() {
     console.log(error);
   });
 });
-
-/*var appIcon = null;
-app.on('ready', function(){
-  appIcon = new Tray('images/depthicon.png');
-  var contextMenu = Menu.buildFromTemplate([
-    { label: 'Item1', type: 'radio' },
-    { label: 'Item2', type: 'radio' },
-    { label: 'Item3', type: 'radio', checked: true },
-    { label: 'Item4', type: 'radio' }
-  ]);
-  appIcon.setToolTip('This is my application.');
-  appIcon.setContextMenu(contextMenu);
-});
-*/
-//app.dock.setBadge('hello world!');
