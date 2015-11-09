@@ -24,7 +24,7 @@ if (process.platform == 'darwin') {
   });
 
   autoUpdater.on('update-available', function(e, m) {
-    msg.message = 'Checking for update';
+    msg.message = 'Downloading update';
     notifier.notify(msg);
     console.log('update-available', e, m);
   });
@@ -36,8 +36,9 @@ if (process.platform == 'darwin') {
   });
 
   autoUpdater.on('update-downloaded', function(e, m) {
-    msg.message = 'Update downloaded';
+    msg.message = 'Update downloaded, installing';
     notifier.notify(msg);
+    autoUpdater.quitAndInstall();
     console.log('update-downloaded', e, m);
   });
 
