@@ -5,6 +5,7 @@ var BrowserWindow = require('browser-window');
 require('./desktop/AppMenu');
 require('./desktop/DockMenu');
 require('./desktop/TrayMenu');
+require('./desktop/AutoUpdate');
 
 var mainWindow = null;
 
