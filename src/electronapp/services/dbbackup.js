@@ -17,8 +17,13 @@ function getUserHome() {
 
 function runBackup() {
   if (pathResult.exists) {
-    var filename = 'SuuntoDiveManagerBackup-' + (new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/g, '-')) + '.backup';
-    var backupPath = path.join(getUserHome(), 'Desktop', filename);    
+    var filename = 'SuuntoDiveManagerBackup-' +
+      (new Date().toISOString()
+        .replace(/T/, '-')
+        .replace(/\..+/, '')
+        .replace(/:/g, '-')) + '.backup';
+
+    var backupPath = path.join(getUserHome(), 'Desktop', filename);
     fs.copy(pathResult.path, backupPath, function (err) {
       if (err) return console.error(err);
       shell.showItemInFolder(backupPath);
