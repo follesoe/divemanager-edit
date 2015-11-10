@@ -9,8 +9,6 @@ var component   = omniscient.withDefaults({jsx: true});
 var DiveApp     = require('./components/DiveApp');
 
 var ipc = require('ipc');
-var remote = require('remote');
-var app = remote.require('app');
 
 var structure = immstruct({
   selectedDiveId: -1,
@@ -37,6 +35,7 @@ dbaccess.getDives(pathResult.path).then(function (dives) {
 });
 
 function save(dive) {
+  ipc.send('dive-saved');
   return dbaccess.saveDive(pathResult.path, dive.toJS());
 }
 
@@ -48,4 +47,12 @@ function render () {
 }
 
 render();
-structure.on('swap', render);
+
+structure.on('swap', function(oldStruct, newStruct, path) {
+  // Dive mode changed
+  if (path && path.length === 3 && path[2] == 'Mode') {
+    ipc.send('dive-changed');
+  }
+
+  render();
+});

@@ -5,7 +5,7 @@
     "name": "Jonas Follesø",
     "url": "https://github.com/follesoe/divemanager-edit"
   },
-  "version": "0.0.11",
+  "version": "0.0.12",
   "main": "main.js",
   "dependencies": {
     "electron-debug": "^0.4.0",
