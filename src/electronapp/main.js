@@ -1,13 +1,13 @@
 var app = require('app');
 var Tray = require('tray');
+var Menu = require('menu');
 var BrowserWindow = require('browser-window');
 
-require('./desktop/AppMenu');
-require('./desktop/DockMenu');
-//require('./desktop/TrayMenu');
-require('./desktop/AutoUpdate');
+var getAppMenuTemplate = require('./desktop/AppMenu');
+var menuTemplate = require('./desktop/MenuTemplate');
 
 var mainWindow = null;
+var trayIcon = null;
 
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
@@ -23,7 +23,7 @@ app.on('ready', function() {
     mainWindow = null;
   });
 
-  mainWindow.on('error', (error) => {
+  mainWindow.on('error', error => {
     console.log(error);
   });
 
@@ -31,4 +31,10 @@ app.on('ready', function() {
     mainWindow.setTitle(app.getName() + ' - ' + app.getVersion());
   });
 
+  Menu.setApplicationMenu(Menu.buildFromTemplate(getAppMenuTemplate()));
+  app.dock.setMenu(Menu.buildFromTemplate(menuTemplate));
+
+  trayIcon = new Tray('images/trayicon.png');
+  trayIcon.setToolTip('SuuntoDMEditor');
+  trayIcon.setContextMenu(menuTemplate[0].submenu);
 });
