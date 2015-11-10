@@ -16,7 +16,7 @@
       var remote = require('remote');
       var Menu = remote.require('menu');
 
-      var menu = Menu.buildFromTemplate(template);
+      var menu = Menu.buildFromTemplate(template());
       window.addEventListener('contextmenu', function (e) {
         e.preventDefault();
         menu.popup(remote.getCurrentWindow());

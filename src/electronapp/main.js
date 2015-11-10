@@ -43,7 +43,7 @@ app.on('ready', function() {
   });
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(getAppMenuTemplate()));
-  app.dock.setMenu(Menu.buildFromTemplate(menuTemplate));
+  app.dock.setMenu(Menu.buildFromTemplate(menuTemplate()));
 
   /*
   TODO: Figure out why it crash when signed
