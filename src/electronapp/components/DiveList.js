@@ -1,6 +1,5 @@
 var React         = window.React || require('react'),
-    omniscient    = require('omniscient/component')(React),
-    component     = omniscient.withDefaults({jsx: true}),
+    component     = require('omniscient'),
     DiveListItem  = require('./DiveListItem');
 
 var DiveList = component('DiveList', function (props) {

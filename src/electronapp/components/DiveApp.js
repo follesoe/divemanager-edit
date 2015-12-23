@@ -1,6 +1,5 @@
-var React       = window.React  || require('react'),
-    omniscient  = require('omniscient/component')(React),
-    component   = omniscient.withDefaults({jsx: true}),
+var React       = window.React || require('react'),
+    component   = require('omniscient'),
     DiveList    = require('./DiveList'),
     DbMissing   = require('./DbMissing'),
     DiveDetails = require('./DiveDetails');
@@ -22,7 +21,6 @@ var DiveApp = component('DiveApp', function (props) {
           dives={appState.cursor('dives')}
           dbpath={appState.cursor('dbpath')}
           selectedDiveId={appState.cursor('selectedDiveId')} />
-
         <DiveDetails dive={selectedDive} onSave={saveAction} />
       </div>
     );

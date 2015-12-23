@@ -2,7 +2,7 @@ var fs = require('fs-extra');
 var shell = require('shell');
 var path = require('path');
 var dbpath = require('./dbpath');
-var dialog = require('dialog');
+var dialog = require('electron').dialog;
 
 var pathResult = dbpath.getPath();
 

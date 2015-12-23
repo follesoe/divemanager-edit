@@ -1,14 +1,14 @@
-var dbpath      = require('./services/dbpath');
-var dbaccess    = require('./services/dbaccess');
-var immstruct   = require('immstruct');
-var immutable   = require('immutable');
-var document    = window.document;
-var React       = window.React || require('react');
-var omniscient  = require('omniscient/component')(React);
-var component   = omniscient.withDefaults({jsx: true});
-var DiveApp     = require('./components/DiveApp');
-
-var ipc = require('ipc');
+var dbpath       = require('./services/dbpath');
+var dbaccess     = require('./services/dbaccess');
+var immstruct    = require('immstruct');
+var immutable    = require('immutable');
+var document     = window.document;
+var React        = window.React || require('react');
+var reactRender  = require('react-dom').render;
+var omniscient   = require('omniscient');
+var ipc          = require('electron').ipcRenderer;
+var component    = omniscient;
+var DiveApp      = require('./components/DiveApp');
 
 var structure = immstruct({
   selectedDiveId: -1,
@@ -40,7 +40,7 @@ function save(dive) {
 }
 
 function render () {
-  React.render(
+  reactRender(
     <DiveApp cursor={structure.cursor()} onSave={save} />,
     document.getElementById('main')
   );

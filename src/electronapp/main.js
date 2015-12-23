@@ -1,5 +1,5 @@
 var app = require('app');
-var ipc = require('ipc');
+var ipc = require('electron').ipcMain;
 var Tray = require('tray');
 var Menu = require('menu');
 var BrowserWindow = require('browser-window');
@@ -28,7 +28,8 @@ app.on('window-all-closed', function() {
 
 app.on('ready', function() {
   mainWindow = new BrowserWindow({width: 1024, height: 720});
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  //mainWindow.toggleDevTools();
 
   mainWindow.on('closed', () => {
     mainWindow = null;

@@ -1,6 +1,5 @@
 var React         = window.React || require('react'),
-    omniscient    = require('omniscient/component')(React),
-    component     = omniscient.withDefaults({jsx: true});
+    component     = require('omniscient');
 
 var DiveModeRadioButton = component('DiveModeRadioButton', function (props) {
   var classes = props.selected ? 'divemode selectedmode' : 'divemode';

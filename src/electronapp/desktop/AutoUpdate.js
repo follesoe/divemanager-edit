@@ -49,8 +49,8 @@ function startUpdater()
     var version = app.getVersion();
     var feedUrl = 'https://suuntodmeditornuts.herokuapp.com/update/'+platform+'/'+version;
     try {
-      autoUpdater.setFeedUrl(feedUrl);
-      autoUpdater.checkForUpdates();
+      //autoUpdater.setFeedURL(feedUrl);
+      //autoUpdater.checkForUpdates();
     }  catch(err) {
       console.log(err);
     }
