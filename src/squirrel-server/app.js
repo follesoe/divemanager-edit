@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
   res.send('Squirrel Test Server');
 });
 
-app.get('/update/darwin/:version', function (req, res) {
+app.get('/update/darwin_x64/:version', function (req, res) {
   var version = req.params.version;
   fs.readdir('../../output/SuuntoDMEditor-darwin-x64', function (err, files) {
     var zipFiles = files.filter(f => f.endsWith('.zip')).sort(cmp).reverse();
