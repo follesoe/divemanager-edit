@@ -6,7 +6,6 @@ var BrowserWindow = require('browser-window');
 
 var getAppMenuTemplate = require('./desktop/AppMenu');
 var menuTemplate = require('./desktop/MenuTemplate');
-var startUpdater = require('./desktop/AutoUpdate');
 
 var mainWindow = null;
 var trayIcon = null;
@@ -52,6 +51,4 @@ app.on('ready', function() {
   trayIcon.setToolTip('SuuntoDMEditor');
   trayIcon.setContextMenu(menuTemplate[0].submenu);
   */
-
-  startUpdater();
 });

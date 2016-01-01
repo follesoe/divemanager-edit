@@ -2,13 +2,14 @@ var app = require('app');
 var Menu = require('menu');
 var MenuItem = require('menu-item');
 var backup = require('../services/dbbackup');
+var autoUpdate = require('./AutoUpdate');
 
 function getMenuTemplate() {
   var template = [{
-    label: "Suunto Dive Manager",
+    label: 'Suunto Dive Manager',
     submenu: [
-      { label: "Backup Database", click: backup.runBack },
-      { label: "Open Database Folder", click: backup.openFolder },
+      { label: 'Backup Database', click: backup.runBack },
+      { label: 'Open Database Folder', click: backup.openFolder },
     ]}
   ];
 
