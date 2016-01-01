@@ -1,0 +1,21 @@
+{
+  "name": "SuuntoDMEditor-Squirrel-Server",
+  "description": "Test server to serve Squirrel Updates",
+  "author": {
+    "name": "Jonas Follesø",
+    "url": "https://github.com/follesoe/divemanager-edit"
+  },
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/follesoe/divemanager-edit.git"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "semver-compare": "^1.0.0"
+  },
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  }
+}
