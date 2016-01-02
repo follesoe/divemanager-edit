@@ -56,7 +56,7 @@ function checkForUpdates() {
   try {
     autoUpdater.setFeedURL(feedUrl);
     autoUpdater.checkForUpdates();
-  }  catch(err) {
+  } catch(err) {
     console.log(err);
   }
 }
