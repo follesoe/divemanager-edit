@@ -18,9 +18,9 @@ function getMenuTemplate() {
     template.unshift({
       label: name,
       submenu: [
-        {
-          label: 'About ' + name, role: 'about'
-        },
+        { label: 'About ' + name, role: 'about' },
+        { label: 'Version ' + app.getVersion(), enabled: false },
+        { label: 'Check for Update', click: autoUpdate.checkForUpdates },
         { type: 'separator' },
         { label: 'Services', role: 'services', submenu: [] },
         { type: 'separator' },
