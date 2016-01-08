@@ -1,5 +1,6 @@
 var app = require('app');
 var ipc = require('electron').ipcMain;
+var autoUpdater  = require('auto-updater');
 var Tray = require('tray');
 var Menu = require('menu');
 var BrowserWindow = require('browser-window');
@@ -7,8 +8,7 @@ var BrowserWindow = require('browser-window');
 var getAppMenuTemplate = require('./desktop/AppMenu');
 var menuTemplate = require('./desktop/MenuTemplate');
 
-var mainWindow = null;
-var trayIcon = null;
+var appMenu, trayMenu, trayIcon, mainWindow = null;
 
 ipc.on('dive-changed', function() {
   app.dock.setBadge('1');
@@ -17,6 +17,12 @@ ipc.on('dive-changed', function() {
 
 ipc.on('dive-saved', function() {
   app.dock.setBadge('');
+});
+
+autoUpdater.on('update-available', function(e) {
+  var installItem = appMenu.items[0].submenu.items[3];
+  installItem.enabled = true;
+  installItem.visible = true;
 });
 
 app.on('window-all-closed', function() {
@@ -42,8 +48,11 @@ app.on('ready', function() {
     mainWindow.setTitle(app.getName() + ' - ' + app.getVersion());
   });
 
-  Menu.setApplicationMenu(Menu.buildFromTemplate(getAppMenuTemplate()));
-  app.dock.setMenu(Menu.buildFromTemplate(menuTemplate()));
+  appMenu = Menu.buildFromTemplate(getAppMenuTemplate());
+  Menu.setApplicationMenu(appMenu);
+
+  dockMenu = Menu.buildFromTemplate(menuTemplate());
+  app.dock.setMenu(dockMenu);
 
   /*
   TODO: Figure out why it crash when signed

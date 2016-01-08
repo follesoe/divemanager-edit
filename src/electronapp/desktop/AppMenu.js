@@ -21,6 +21,7 @@ function getMenuTemplate() {
         { label: 'About ' + name, role: 'about' },
         { label: 'Version ' + app.getVersion(), enabled: false },
         { label: 'Check for Update', click: autoUpdate.checkForUpdates },
+        { label: 'Install Update', click: autoUpdate.quitAndInstall, enabled: false, visible: false, id: 'install-update' },
         { type: 'separator' },
         { label: 'Services', role: 'services', submenu: [] },
         { type: 'separator' },

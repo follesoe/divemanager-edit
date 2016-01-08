@@ -43,7 +43,7 @@ if (process.platform == 'darwin') {
 
   autoUpdater.on('update-downloaded', function(e, releaseNotes, releaseName, releaseDate, updateUrl, quitAndUpdate) {
     console.log('update-downloaded');
-    msg.title = releaseName + " downloaded, installing.";
+    msg.title = releaseName + " downloaded.";
     msg.message = releaseNotes;
     notifier.notify(msg);
   });
