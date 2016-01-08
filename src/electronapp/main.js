@@ -19,8 +19,9 @@ ipc.on('dive-saved', function() {
   app.dock.setBadge('');
 });
 
-autoUpdater.on('update-available', function(e) {
+autoUpdater.on('update-downloaded', function(e, releaseNotes, releaseName) {
   var installItem = appMenu.items[0].submenu.items[3];
+  installItem.label = `Install ${releaseName}`;
   installItem.enabled = true;
   installItem.visible = true;
 });
