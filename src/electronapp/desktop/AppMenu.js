@@ -25,7 +25,7 @@ function getMenuTemplate() {
         { type: 'separator' },
         { label: 'Services', role: 'services', submenu: [] },
         { type: 'separator' },
-        { label: 'Hide ' + name, accelerator: 'Command+H', role: 'hide' },
+        { label: `Hide ${name}`, accelerator: 'Command+H', role: 'hide' },
         { label: 'Hide Others', accelerator: 'Command+Shift+H', role: 'hideothers' },
         { label: 'Show All', role: 'unhide' },
         { type: 'separator' },

@@ -36,14 +36,14 @@ if (process.platform == 'darwin') {
 
   autoUpdater.on('update-not-available', function(e) {
     msg.title = 'No update available';
-    msg.message = 'Version ' + app.getVersion() + ' is the latest version.';
+    msg.message = `Version ${app.getVersion()} is the latest version.`;
     notifier.notify(msg);
     console.log('update-not-available');
   });
 
   autoUpdater.on('update-downloaded', function(e, releaseNotes, releaseName, releaseDate, updateUrl, quitAndUpdate) {
     console.log('update-downloaded');
-    msg.title = releaseName + " downloaded.";
+    msg.title = `${releaseName} downloaded.`;
     msg.message = releaseNotes;
     notifier.notify(msg);
   });
@@ -54,7 +54,7 @@ if (process.platform == 'darwin') {
   var feedHost = process.resourcesPath.endsWith('electron-prebuilt/dist/Electron.app/Contents/Resources') ?
     'http://localhost:3000' : 'https://suuntodmeditornuts.herokuapp.com';
   //feedUrl = feedHost + '/update/'+platform+'/'+version;
-  feedUrl = 'http://localhost:3000/update/'+platform+'/'+version;
+  feedUrl = `http://localhost:3000/update/${platform}/${version}`;
 }
 
 function checkForUpdates() {

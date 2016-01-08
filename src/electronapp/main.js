@@ -37,16 +37,11 @@ app.on('ready', function() {
   mainWindow.loadURL('file://' + __dirname + '/index.html');
   //mainWindow.toggleDevTools();
 
-  mainWindow.on('closed', () => {
-    mainWindow = null;
-  });
-
-  mainWindow.on('error', error => {
-    console.log(error);
-  });
+  mainWindow.on('closed', () => mainWindow = null);
+  mainWindow.on('error', error => console.log(error));
 
   mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.setTitle(app.getName() + ' - ' + app.getVersion());
+    mainWindow.setTitle(`${app.getName()} - ${app.getVersion()}`);
   });
 
   appMenu = Menu.buildFromTemplate(getAppMenuTemplate());
