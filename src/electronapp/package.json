@@ -24,7 +24,7 @@
   "devDependencies": {
     "del": "^2.2.0",
     "electron-packager": "^5.1.1",
-    "electron-prebuilt": "^0.36.1",
+    "electron-prebuilt": "^0.36.3",
     "electron-rebuild": "^1.0.2",
     "gulp": "^3.9.0",
     "gulp-shell": "^0.5.1",
@@ -39,5 +39,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/follesoe/divemanager-edit.git"
-  }
+  },
+  "license": "ISC"
 }
