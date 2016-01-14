@@ -6,7 +6,7 @@ var Menu = require('menu');
 var BrowserWindow = require('browser-window');
 
 var getAppMenuTemplate = require('./desktop/AppMenu');
-var menuTemplate = require('./desktop/MenuTemplate');
+var getMenuTemplate = require('./desktop/MenuTemplate');
 
 var appMenu, trayMenu, trayIcon, mainWindow = null;
 
@@ -47,13 +47,6 @@ app.on('ready', function() {
   appMenu = Menu.buildFromTemplate(getAppMenuTemplate());
   Menu.setApplicationMenu(appMenu);
 
-  dockMenu = Menu.buildFromTemplate(menuTemplate());
+  dockMenu = Menu.buildFromTemplate(getMenuTemplate());
   app.dock.setMenu(dockMenu);
-
-  /*
-  TODO: Figure out why it crash when signed
-  trayIcon = new Tray('images/trayicon.png');
-  trayIcon.setToolTip('SuuntoDMEditor');
-  trayIcon.setContextMenu(menuTemplate[0].submenu);
-  */
 });

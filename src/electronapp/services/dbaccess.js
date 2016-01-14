@@ -15,6 +15,8 @@ var getDives = function (dbPath) {
         row.MaxDepth = Math.round(row.MaxDepth);
         dives.push(row);
       });
+
+      //console.log(JSON.stringify(rows, null, '  '));
       resolve(dives);
     });
 
