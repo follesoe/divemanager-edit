@@ -6,13 +6,38 @@ var getDives = function (dbPath) {
     var db = new sqlite3.Database(dbPath);
     var dives = [];
 
-    db.all('SELECT DiveId, StartTime, Duration, Mode, MaxDepth, Note, BottomTemperature, DiveNumberInSerie, Source FROM Dive ORDER BY StartTime DESC', function (err, rows) {
+    db.all('SELECT DiveId, StartTime, Duration, Mode, MaxDepth, AvgDepth, Note, BottomTemperature, DiveNumberInSerie, Source FROM Dive ORDER BY StartTime DESC', function (err, rows) {
       rows.forEach(function (row) {
         row.Selected = false;
+        row.StartDateTime = moment((row.StartTime - 621355968000000000)/10000).utcOffset(0);
         row.StartDate = moment((row.StartTime - 621355968000000000)/10000).utcOffset(0).format('DD.MM.YYYY');
         row.StartTime = moment((row.StartTime - 621355968000000000)/10000).utcOffset(0).format('HH:mm');
         row.Duration = moment.utc(0).add(row.Duration, 's').format('HH:mm:ss');
-        row.MaxDepth = Math.round(row.MaxDepth);
+        row.MaxDepth = row.MaxDepth;
+
+        if (row.Source == null) {
+          row.Source = '';
+        }
+
+        if (row.AvgDepth == null) {
+          row.AvgDepth = 0;
+        }
+
+        switch (row.Mode) {
+          case 0:
+            row.ModeType = 'Air';
+            break;
+          case 1:
+            row.ModeType = 'Nitrox';
+            break;
+          case 2:
+            row.ModeType = 'Gauge';
+            break;
+          case 3:
+            row.ModeType = 'Free';
+            break;
+        }
+
         dives.push(row);
       });
 
